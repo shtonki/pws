@@ -34,7 +34,7 @@ namespace pws
 
             images[Textures.A] = Resources.AlterFate;
             images[Textures.B] = Resources.AlterTime;
-            images[Textures.fontovich] = Resources.memefont;
+            images[Textures.fontovich] = Resources.noname;
             images[Textures.memex] = Resources.memex;
         }
 

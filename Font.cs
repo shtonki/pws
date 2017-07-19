@@ -31,7 +31,7 @@ namespace pws
             xdds = new Dictionary<string, glyphxd>();
 
             var lines = fontstring.Split("\n\r".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-
+            glyphxd lst = new glyphxd();
             foreach (string line in lines)
             {
                 string[] ss = line.Split();
@@ -39,8 +39,9 @@ namespace pws
                 int l = Int32.Parse(ss[1]);
                 int w = Int32.Parse(ss[2]);
 
-                xdds[g] = new glyphxd(l, w);
+                lst = xdds[g] = new glyphxd(l, w);
             }
+            xdds[" "] = new glyphxd(lst.startx + lst.width, 32);
         }
 
         public static FontFamille font1 = new FontFamille(Textures.fontovich, Properties.Resources.font1);

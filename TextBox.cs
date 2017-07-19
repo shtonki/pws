@@ -19,6 +19,10 @@ namespace pws
 
         public override void draw(DrawerMaym dm)
         {
+            x++;
+            x++;
+            x++;
+
             int p = 0;
 
             var sz = ImageLoader.sizeOf(ff.fontImage);

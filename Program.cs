@@ -25,7 +25,7 @@ namespace pws
             s.addElement(new ImageBox(100, 200, 400, 400, Textures.memex, new Box(0.4, 0.2, 0.5, 0.5)));
             */
 
-            s.addElement(new TextBox(0, 0, 800, 200, "ABCDEF", FontFamille.font1));
+            s.addElement(new TextBox(0, 0, 800, 200, "THESE HOES AINT LOYAL", FontFamille.font1));
 
 
             GUI.setScreen(s);

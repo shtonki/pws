@@ -83,14 +83,29 @@ namespace pws.Properties {
         /// <summary>
         ///   Looks up a localized string similar to A 0 40
         ///B 40 33
-        ///C 73 38
-        ///D 111 35
-        ///E 146 35
-        ///F 181 25
-        ///G 206 40
-        ///H 246 40
+        ///C 73 37
+        ///D 110 38
+        ///E 148 30
+        ///F 178 30
+        ///G 208 40
+        ///H 248 38
         ///I 286 16
-        ///J 302 20.
+        ///J 302 20
+        ///K 322 40
+        ///L 362 25
+        ///M 387 50
+        ///N 437 45
+        ///O 482 40
+        ///P 522 33
+        ///Q 555 48
+        ///R 603 30
+        ///S 633 28
+        ///T 661 35
+        ///U 696 37
+        ///V 733 38
+        ///X 771 33
+        ///Y 804 31
+        ///Z 835 30.
         /// </summary>
         internal static string font1 {
             get {
@@ -101,9 +116,9 @@ namespace pws.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap memefont {
+        internal static System.Drawing.Bitmap memex {
             get {
-                object obj = ResourceManager.GetObject("memefont", resourceCulture);
+                object obj = ResourceManager.GetObject("memex", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -111,9 +126,9 @@ namespace pws.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap memex {
+        internal static System.Drawing.Bitmap noname {
             get {
-                object obj = ResourceManager.GetObject("memex", resourceCulture);
+                object obj = ResourceManager.GetObject("noname", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
