@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DrawerMaym.cs" />
+    <Compile Include="Font.cs" />
     <Compile Include="FontBuilder.cs" />
     <Compile Include="Frame.cs" />
     <Compile Include="GUI.cs" />
@@ -67,6 +68,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Screen.cs" />
+    <Compile Include="TextBox.cs" />
     <Compile Include="TextureLoader.cs" />
   </ItemGroup>
   <ItemGroup>

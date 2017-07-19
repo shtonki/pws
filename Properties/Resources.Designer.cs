@@ -81,6 +81,24 @@ namespace pws.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A 0 40
+        ///B 40 33
+        ///C 73 38
+        ///D 111 35
+        ///E 146 35
+        ///F 181 25
+        ///G 206 40
+        ///H 246 40
+        ///I 286 16
+        ///J 302 20.
+        /// </summary>
+        internal static string font1 {
+            get {
+                return ResourceManager.GetString("font1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap memefont {

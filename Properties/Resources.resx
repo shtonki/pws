@@ -124,6 +124,18 @@
   <data name="AlterTime" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AlterTime.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="font1" xml:space="preserve">
+    <value>A 0 40
+B 40 33
+C 73 38
+D 111 35
+E 146 35
+F 181 25
+G 206 40
+H 246 40
+I 286 16
+J 302 20</value>
+  </data>
   <data name="memefont" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\memefont.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

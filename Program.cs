@@ -16,10 +16,17 @@ namespace pws
         {
             GUI.launch();
 
+            //FontBuilder.buildFont(Textures.fontovich, FontBuilder.xd);
+
             Screen s = new Screen();
+            /*
             s.addElement(new Panel(0, 0, 1920, 540, Color.FloralWhite));
             s.addElement(new Panel(0, 540, 1920, 540, Color.CadetBlue));
-            s.addElement(new ImageBox(100, 200, 400, 400, Textures.memex));
+            s.addElement(new ImageBox(100, 200, 400, 400, Textures.memex, new Box(0.4, 0.2, 0.5, 0.5)));
+            */
+
+            s.addElement(new TextBox(0, 0, 800, 200, "ABCDEF", FontFamille.font1));
+
 
             GUI.setScreen(s);
         }
