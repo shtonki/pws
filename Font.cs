@@ -22,13 +22,13 @@ namespace pws
     class FontFamille
     {
         public Textures fontImage;
-        public Dictionary<string, glyphxd> xdds;
+        public Dictionary<string, glyphxd> characters;
 
         public FontFamille(Textures fontImage, string fontstring)
         {
             this.fontImage = fontImage;
 
-            xdds = new Dictionary<string, glyphxd>();
+            characters = new Dictionary<string, glyphxd>();
 
             var lines = fontstring.Split("\n\r".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             glyphxd lst = new glyphxd();
@@ -39,9 +39,9 @@ namespace pws
                 int l = Int32.Parse(ss[1]);
                 int w = Int32.Parse(ss[2]);
 
-                lst = xdds[g] = new glyphxd(l, w);
+                lst = characters[g] = new glyphxd(l, w);
             }
-            xdds[" "] = new glyphxd(lst.startx + lst.width, 32);
+            characters[" "] = new glyphxd(lst.startx + lst.width, 32);
         }
 
         public static FontFamille font1 = new FontFamille(Textures.fontovich, Properties.Resources.font1);

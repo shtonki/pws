@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Button.cs" />
     <Compile Include="DrawerMaym.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="FontBuilder.cs" />

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Input;
 using pws.Properties;
 using PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
 
@@ -64,6 +65,59 @@ namespace pws
             this.SwapBuffers();
         }
 
+        protected override void OnMouseDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseDown(e);
+            hovered?.mouseDown();
+        }
+
+        protected override void OnMouseUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseDown(e);
+            hovered?.mouseUp();
+        }
+
+        private GuiElement hovered;
+
+        protected override void OnMouseMove(MouseMoveEventArgs e)
+        {
+            base.OnMouseMove(e);
+            var newover = elementAt(e.Position);
+            if (newover != hovered)
+            {
+                hovered?.mouseLeave();
+                newover?.mouseEnter();
+            }
+            hovered = newover;
+        }
+
+        private GuiElement elementAt(Point p)
+        {
+            var sp = scalePoint(p);
+            int x = sp.X;
+            int y = sp.Y;
+
+            foreach (var v in activeScreen.elements)
+            {
+                if (v.x < x &&
+                    v.x + v.width > x &&
+                    v.y < y &&
+                    v.y + v.height > y)
+                {
+                    return v;
+                }
+            }
+
+            return null;
+        }
+
+        private Point scalePoint(Point p)
+        {
+            double xs = ((double)Program.BACKSCREENWIDTH) / Width;
+            double ys = ((double)Program.BACKSCREENHEIGHT) / Height;
+
+            return new Point((int)Math.Round(p.X*xs), (int)Math.Round(p.Y*ys));
+        }
 
         private static Dictionary<Textures, int> textures;
 

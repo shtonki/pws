@@ -15,6 +15,8 @@ namespace pws
         public int width { get; set; }
         public int height { get; set; }
 
+        public Color backcolor { get; set; } = Color.Transparent;
+
         public GuiElement()
         {
             width = 100;
@@ -49,5 +51,25 @@ namespace pws
         }
 
         public abstract void draw(DrawerMaym dm);
+
+        public virtual void mouseDown()
+        {
+            
+        }
+
+        public virtual void mouseUp()
+        {
+
+        }
+
+        public virtual void mouseLeave()
+        {
+            
+        }
+
+        public virtual void mouseEnter()
+        {
+
+        }
     }
 }

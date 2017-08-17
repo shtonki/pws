@@ -90,7 +90,7 @@ namespace pws
 
         public static Box boxifyScreen(int x, int y, int w, int h)
         {
-            return boxify(x, y, w, h, 1920 / 2, 1080 / 2);
+            return boxify(x, y, w, h, Program.BACKSCREENWIDTH / 2, Program.BACKSCREENHEIGHT / 2);
         }
 
         public static Box boxify(int x, int y, int w, int h, int swd2, int shd2)
