@@ -18,6 +18,7 @@ namespace pws
         public Color backcolor { get; set; } = Color.Transparent;
 
         public List<GuiElement> children { get; private set; }= new List<GuiElement>();
+        public GuiElement parent { get; private set; }
 
         public GuiElement()
         {
@@ -55,6 +56,7 @@ namespace pws
         public void addChild(GuiElement child)
         {
             children.Add(child);
+            child.parent = this;
         }
 
         public virtual void draw(DrawerMaym dm)

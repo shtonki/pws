@@ -33,7 +33,6 @@ namespace pws
 
             s.addElement(p);
 
-
             GUI.setScreen(s);
         }
     }

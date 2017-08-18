@@ -95,6 +95,7 @@ namespace pws
         {
             base.OnMouseMove(e);
             var newover = elementAt(e.Position);
+            
             if (newover != hovered)
             {
                 hovered?.mouseLeave();
@@ -103,24 +104,37 @@ namespace pws
             hovered = newover;
         }
 
+
         private GuiElement elementAt(Point p)
         {
             var sp = scalePoint(p);
+
             int x = sp.X;
             int y = sp.Y;
+            GuiElement r = null;
+            var l = activeScreen.elements;
 
-            foreach (var v in activeScreen.elements)
+            while (true)
             {
-                if (v.x < x &&
-                    v.x + v.width > x &&
-                    v.y < y &&
-                    v.y + v.height > y)
-                {
-                    return v;
-                }
-            }
+                bool c = false;
 
-            return null;
+                foreach (var v in l)
+                {
+                    if (v.x < x &&
+                        v.x + v.width > x &&
+                        v.y < y &&
+                        v.y + v.height > y)
+                    {
+                        r = v;
+                        l = v.children;
+                        c = true;
+                        x -= v.x;
+                        y -= v.y;
+                    }
+                }
+
+                if (!c) return r;
+            }
         }
 
 
