@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace pws
 {
-    class TextBox : GuiElement
+    class TextBox : Square
     {
         private string text;
         private FontFamille ff;

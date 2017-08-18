@@ -20,12 +20,12 @@ namespace pws
 
             Screen s = new Screen();
             /*
-            s.addElement(new Panel(0, 0, 1920, 540, Color.FloralWhite));
-            s.addElement(new Panel(0, 540, 1920, 540, Color.CadetBlue));
+            s.addElement(new Square(0, 0, 1920, 540, Color.FloralWhite));
+            s.addElement(new Square(0, 540, 1920, 540, Color.CadetBlue));
             s.addElement(new TextBox(40, 40, 400, 100, "THESE HOES AINT LOYAL", FontFamille.font1));
             
 
-            Panel p = new Panel(500, 500, 200, 200, Color.Firebrick);
+            Square p = new Square(500, 500, 200, 200, Color.Firebrick);
             Button b = new Button(40, 40, "X");
             b.setLocation(80, 80);
             p.addChild(b);
@@ -34,12 +34,11 @@ namespace pws
             //s.addElement(p);
             */
 
-            Panel p = new Panel(100, 100);
+            Square p = new Square(100, 100);
             p.backcolor = Color.ForestGreen;
 
-            var e = new Winduh(p);
 
-            s.addElement(e);
+            //s.addElement(e);
 
             GUI.setScreen(s);
         }

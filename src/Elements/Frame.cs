@@ -80,13 +80,13 @@ namespace pws
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
-            hovered?.mouseDown();
+            hovered?.onMouseDown();
         }
 
         protected override void OnMouseUp(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
-            hovered?.mouseUp();
+            hovered?.onMouseUp();
         }
 
         private GuiElement hovered;
@@ -98,8 +98,8 @@ namespace pws
             
             if (newover != hovered)
             {
-                hovered?.mouseLeave();
-                newover?.mouseEnter();
+                hovered?.onMouseLeave();
+                newover?.onMouseEnter();
             }
             hovered = newover;
         }

@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace pws
 {
-    class ImageBox : GuiElement
+    class ImageBox : Square
     {
+
         public Textures texture { get; set; }
 
         private Box crop { get; set; }

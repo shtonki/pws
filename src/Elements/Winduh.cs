@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace pws
 {
+    /*
     class Winduh : GuiElement
     {
         public Winduh(GuiElement g)
@@ -14,16 +15,13 @@ namespace pws
             height = g.height + 20;
             g.setLocation(0, 20);
 
-            Button b = new Button(width, 20);
-            b.addCallback(() =>
-            {
-                
-            });
+            //Button b = new Button(width, 20);
 
-            addChild(b);
+            //addChild(b);
             addChild(g);
         }
 
 
     }
+    */
 }

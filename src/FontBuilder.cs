@@ -17,7 +17,7 @@ namespace pws
             Screen s = new Screen();
             GUI.setScreen(s);
 
-            var bp = new Panel(0, 0, 500, 500, Color.LightCoral);
+            var bp = new Square(0, 0, 500, 500, Color.LightCoral);
             s.addElement(bp);
 
             var v = new ImageBox(0, 0, 500, 500, Textures.fontovich);
