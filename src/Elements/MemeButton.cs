@@ -12,9 +12,9 @@ namespace pws
 
         public MemeButton(int width, int height) : base(width, height)
         {
-            var x = rand.NextDouble()/3;
-            var y = rand.NextDouble()/5;
-            backimege = new Imege(Textures.buttonbg0, new Box(x, y, x + 0.1, y + 0.1));
+            var x = rand.NextDouble()*0.7;
+            var y = rand.NextDouble()*0.7;
+            backimege = new Imege(Textures.buttonbg2, new Box(x, y, 0.3, 0.3));
         }
     }
 }

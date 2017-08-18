@@ -23,8 +23,13 @@ namespace pws
         fontovich,
 
         bg0,
+        bg1,
 
         buttonbg0,
+        buttonbg1,
+        buttonbg2,
+
+        border0,
     };
 
     public static class ImageLoader
@@ -41,7 +46,11 @@ namespace pws
             images[Textures.fontovich] = Resources.noname;
             images[Textures.memex] = Resources.memex;
             images[Textures.bg0] = Resources.background0;
+            images[Textures.bg1] = Resources.background1;
             images[Textures.buttonbg0] = Resources.buttonbg0;
+            images[Textures.buttonbg1] = Resources.buttonbg1;
+            images[Textures.buttonbg2] = Resources.buttonbg2;
+            images[Textures.border0] = Resources.border0;
         }
 
         public static Size sizeOf(Textures t)

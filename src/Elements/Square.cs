@@ -54,8 +54,13 @@ namespace pws
                 dm.drawImege(backimege, x, y, width, height);
             }
 
-
             textLayout?.draw(dm, x, y);
+
+            
+            dm.drawTexture(Textures.border0, x, y, width, 4,          new Box(0.0, 0.0, 0.4, 0.4));
+            dm.drawTexture(Textures.border0, x, y, 4, height,         new Box(0.0, 0.0, 0.4, 0.4));
+            dm.drawTexture(Textures.border0, x, y+height-4, width, 4, new Box(0.0, 0.0, 0.4, 0.4));
+            dm.drawTexture(Textures.border0, x+width-4, y, 4, height, new Box(0.0, 0.0, 0.4, 0.4));
         }
     }
 }
