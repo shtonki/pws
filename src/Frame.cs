@@ -163,6 +163,13 @@ namespace pws
         public const int BACKSCREENWIDTHd2 = BACKSCREENWIDTH/2;
         public const int BACKSCREENHEIGHTd2 = BACKSCREENHEIGHT/2;
 
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            GL.Viewport(0, 0, Width, Height);
+        }
+
+
         private Point scalePoint(Point p)
         {
             double xs = ((double)BACKSCREENWIDTH) / Width;
