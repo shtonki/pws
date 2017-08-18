@@ -107,6 +107,8 @@ namespace pws
 
         private GuiElement elementAt(Point p)
         {
+            if (activeScreen == null) return null;
+
             var sp = scalePoint(p);
 
             int x = sp.X;

@@ -19,26 +19,13 @@ namespace pws
             //FontBuilder.buildFont(Textures.fontovich, FontBuilder.xd);
 
             Screen s = new Screen();
-            /*
-            s.addElement(new Square(0, 0, 1920, 540, Color.FloralWhite));
-            s.addElement(new Square(0, 540, 1920, 540, Color.CadetBlue));
-            s.addElement(new TextBox(40, 40, 400, 100, "THESE HOES AINT LOYAL", FontFamille.font1));
             
 
-            Square p = new Square(500, 500, 200, 200, Color.Firebrick);
-            Button b = new Button(40, 40, "X");
-            b.setLocation(80, 80);
-            p.addChild(b);
-            s.addElement(new ImageBox(100, 200, 400, 400, Textures.A));
+            var e = new Square(500, 500);
+            //e.backimege = new Imege(Textures.A);
+            e.setText("THESE HOES");
 
-            //s.addElement(p);
-            */
-
-            Square p = new Square(100, 100);
-            p.backcolor = Color.ForestGreen;
-
-
-            //s.addElement(e);
+            s.addElement(e);
 
             GUI.setScreen(s);
         }

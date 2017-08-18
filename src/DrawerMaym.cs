@@ -45,6 +45,11 @@ namespace pws
             GL.End();
         }
 
+        public void drawImege(Imege i, int x, int y, int width, int height)
+        {
+            drawTexture(i.texture, x, y, width, height, i.crop);
+        }
+
         public void drawTexture(Textures t, int x, int y, int width, int height, Box? cropbox = null)
         {
             drawTextureR(t, new Box(x, y, width, height), cropbox);

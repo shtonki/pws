@@ -52,26 +52,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Button.cs" />
-    <Compile Include="DraggablePanel.cs" />
-    <Compile Include="DrawerMaym.cs" />
-    <Compile Include="Font.cs" />
-    <Compile Include="FontBuilder.cs" />
-    <Compile Include="Frame.cs" />
-    <Compile Include="GUI.cs" />
-    <Compile Include="GuiElement.cs" />
-    <Compile Include="ImageBox.cs" />
-    <Compile Include="Panel.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="src\Elements\TextLayout.cs" />
+    <Compile Include="src\Elements\Winduh.cs" />
+    <Compile Include="src\DrawerMaym.cs" />
+    <Compile Include="src\Font.cs" />
+    <Compile Include="src\FontBuilder.cs" />
+    <Compile Include="src\Elements\Frame.cs" />
+    <Compile Include="src\GUI.cs" />
+    <Compile Include="src\Elements\GuiElement.cs" />
+    <Compile Include="src\Elements\ImageBox.cs" />
+    <Compile Include="src\Elements\Square.cs" />
+    <Compile Include="src\Imege.cs" />
+    <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Screen.cs" />
-    <Compile Include="TextBox.cs" />
-    <Compile Include="TextureLoader.cs" />
+    <Compile Include="src\Screen.cs" />
+    <Compile Include="src\Elements\TextBox.cs" />
+    <Compile Include="src\TextureLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
