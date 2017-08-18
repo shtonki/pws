@@ -13,6 +13,7 @@ namespace pws
         public Imege backimege { get; set; }
 
         public string text { get; private set; } = "";
+        public bool multilineText { get; set; }
         public FontFamille fontFamily { get; set; } = FontFamille.font1;
 
 
@@ -31,8 +32,13 @@ namespace pws
 
         public void setText(string txt)
         {
-            textLayout = TextLayout.multiLineLayout(txt, width, height, fontFamily);
             text = txt;
+            layoutText();
+        }
+
+        private void layoutText()
+        {
+            textLayout = TextLayout.multiLineLayout(text, width, height, fontFamily);
         }
 
         private TextLayout textLayout;
@@ -49,7 +55,7 @@ namespace pws
             }
 
 
-            textLayout.draw(dm, x, y);
+            textLayout?.draw(dm, x, y);
         }
     }
 }

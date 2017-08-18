@@ -8,6 +8,17 @@ namespace pws
 {
     class Screen
     {
+        public Imege background { get; }
+
+        public Screen()
+        {
+        }
+
+        public Screen(Imege background)
+        {
+            this.background = background;
+        }
+
         public List<GuiElement> elements { get; } = new List<GuiElement>();
 
         public void addElement(GuiElement element)

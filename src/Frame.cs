@@ -56,6 +56,9 @@ namespace pws
             if (activeScreen != null)
             {
                 DrawerMaym dm = new DrawerMaym(textures);
+
+                if (activeScreen.background != null) dm.drawImege(activeScreen.background, 0, 0, BACKSCREENWIDTH, BACKSCREENHEIGHT);
+
                 foreach (var elem in activeScreen.elements)
                 {
                     drawElement(elem, dm);
@@ -80,13 +83,13 @@ namespace pws
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
-            hovered?.onMouseDown();
+            hovered?.onMouseDown(e);
         }
 
         protected override void OnMouseUp(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
-            hovered?.onMouseUp();
+            hovered?.onMouseUp(e);
         }
 
         private GuiElement hovered;
@@ -98,8 +101,8 @@ namespace pws
             
             if (newover != hovered)
             {
-                hovered?.onMouseLeave();
-                newover?.onMouseEnter();
+                hovered?.onMouseLeave(e);
+                newover?.onMouseEnter(e);
             }
             hovered = newover;
         }

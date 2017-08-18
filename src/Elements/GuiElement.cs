@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenTK.Input;
 
 namespace pws
 {
@@ -48,34 +49,33 @@ namespace pws
 
         public abstract void draw(DrawerMaym dm);
 
-        public virtual void onMouseDown()
+        public virtual void onMouseDown(MouseButtonEventArgs args)
         {
-            
+            mouseDown?.Invoke(args);
         }
 
-        public virtual void onMouseUp()
+        public virtual void onMouseUp(MouseButtonEventArgs args)
+        {
+            mouseUp?.Invoke(args);
+        }
+
+        public virtual void onMouseLeave(MouseMoveEventArgs args)
+        {
+            mouseLeft?.Invoke(args);
+        }
+
+        public virtual void onMouseEnter(MouseMoveEventArgs args)
         {
 
         }
 
-        public virtual void onMouseLeave()
-        {
-            
-        }
-
-        public virtual void onMouseEnter()
-        {
-
-        }
-
-        public delegate void  mouseDownedEventHandler();
-        public delegate void mouseEnteredEventHandler();
-        public delegate void    mouseLeftEventHandler();
-        public delegate void    mouseUpedEventHandler();
-        public delegate void   mouseMovedEventHandler();
+        public delegate void  mouseClickEventHandler(MouseButtonEventArgs args);
+        public delegate void mouseMoveEventHandler(MouseMoveEventArgs args);
 
 
-        public event mouseDownedEventHandler mouseDown;
+        public event mouseClickEventHandler mouseDown;
+        public event mouseClickEventHandler mouseUp;
+        public event mouseMoveEventHandler mouseLeft;
 
     }
 }

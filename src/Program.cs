@@ -18,15 +18,15 @@ namespace pws
 
             //FontBuilder.buildFont(Textures.fontovich, FontBuilder.xd);
 
-            Screen s = new Screen();
-            
+            Screen s = new Screen(new Imege(Textures.bg0));
 
-            var e = new Square(500, 500);
-            //e.backimege = new Imege(Textures.A);
-            e.setText("THESE HOES");
-
-            s.addElement(e);
-
+            for (int i = 0; i < 5; i++)
+            {
+                var e = new MemeButton(800, 80);
+                e.setLocation(500, 100 + i*100);
+                e.setText("THESE HOES AINT LOYAL");
+                s.addElement(e);
+            }
             GUI.setScreen(s);
         }
     }

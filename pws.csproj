@@ -52,12 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Elements\Button.cs" />
+    <Compile Include="src\Elements\MemeButton.cs" />
     <Compile Include="src\Elements\TextLayout.cs" />
     <Compile Include="src\Elements\Winduh.cs" />
     <Compile Include="src\DrawerMaym.cs" />
     <Compile Include="src\Font.cs" />
     <Compile Include="src\FontBuilder.cs" />
-    <Compile Include="src\Elements\Frame.cs" />
+    <Compile Include="src\Frame.cs" />
     <Compile Include="src\GUI.cs" />
     <Compile Include="src\Elements\GuiElement.cs" />
     <Compile Include="src\Elements\ImageBox.cs" />
@@ -97,6 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\noname.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonbg0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

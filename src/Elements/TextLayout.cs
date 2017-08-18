@@ -60,24 +60,39 @@ namespace pws
                 List<x> xlist = new List<x>();
                 double scale = ((double)fontheight)/h;
 
-                foreach (char c in text)
+                foreach (string wrd in words)
                 {
-                    glyphxd v = ff.characters[c.ToString()];
-                    var charwidth = v.width*scale;
+                    int wordwidth = 0;
 
-                    if (xpos + charwidth > width)
+                    foreach (char c in wrd)
+                    {
+                        glyphxd v = ff.characters[c.ToString()];
+                        var charwidth = v.width*scale;
+                        wordwidth += (int)charwidth;
+                    }
+
+                    if (xpos + wordwidth > width)
                     {
                         xpos = 0;
                         ypos += fontheight;
                     }
 
-                    if (ypos > height)
+                    if (ypos + fontheight> height || wordwidth > width)
                     {
-                        return new TextLayout(candidate, ff, fontheight);
+                        return new TextLayout(candidate, ff, fontheight-1);
                     }
 
-                    xlist.Add(new x(v, xpos, ypos, (int)charwidth, new Box(v.startx / w, 0, v.width / w, 1)));
-                    xpos += (int)charwidth;
+                    foreach (char c in wrd)
+                    {
+                        glyphxd v = ff.characters[c.ToString()];
+                        var charwidth = v.width * scale;
+                        xlist.Add(new x(v, xpos, ypos, (int)charwidth, new Box(v.startx/w, 0, v.width/w, 1)));
+                        xpos += (int)charwidth;
+                    }
+
+                    glyphxd vx = ff.characters[" "];
+                    var charwidthx = vx.width * scale;
+                    xpos += (int)charwidthx;
                 }
 
                 candidate = xlist;

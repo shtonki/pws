@@ -21,6 +21,10 @@ namespace pws
         memex,
 
         fontovich,
+
+        bg0,
+
+        buttonbg0,
     };
 
     public static class ImageLoader
@@ -36,6 +40,8 @@ namespace pws
             images[Textures.B] = Resources.AlterTime;
             images[Textures.fontovich] = Resources.noname;
             images[Textures.memex] = Resources.memex;
+            images[Textures.bg0] = Resources.background0;
+            images[Textures.buttonbg0] = Resources.buttonbg0;
         }
 
         public static Size sizeOf(Textures t)
