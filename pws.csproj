@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Button.cs" />
+    <Compile Include="DraggablePanel.cs" />
     <Compile Include="DrawerMaym.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="FontBuilder.cs" />

@@ -9,6 +9,10 @@ namespace pws
 {
     class Panel : GuiElement
     {
+        public Panel(int width, int height) : base(width, height)
+        {
+        }
+
         public Panel(int x, int y, int width, int height, Color backgroundColor) : base(x, y, width, height)
         {
             backcolor = backgroundColor;

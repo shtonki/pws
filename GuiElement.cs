@@ -9,6 +9,7 @@ namespace pws
 {
     abstract class GuiElement
     {
+        protected List<clicked> clickcallbacks = new List<clicked>();
         public int x { get; set; }
         public int y { get; set; }
                
@@ -82,6 +83,13 @@ namespace pws
         public virtual void mouseEnter()
         {
 
+        }
+
+        public delegate void clicked();
+
+        public void addCallback(clicked c)
+        {
+            clickcallbacks.Add(c);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace pws
         public ImageBox(int x, int y, int width, int height, Textures t) : base(x, y, width, height)
         {
             texture = t;
-            crop = new Box(0, 0, 1, 1);
+            crop = new Box(0.0, 0.0, 1.0, 1.0);
         }
 
         public ImageBox(int x, int y, int width, int height, Textures t, Box crop) : base(x, y, width, height)

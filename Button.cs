@@ -9,9 +9,12 @@ namespace pws
 {
     class Button : TextBox
     {
+        public Button(int width, int height) : base(width, height, "")
+        {
+        }
+
         public Button(int width, int height, string text) : base(width, height, text)
         {
-            backcolor = Color.Gainsboro;
         }
 
         public override void mouseDown()
@@ -23,7 +26,13 @@ namespace pws
         public override void mouseUp()
         {
             base.mouseUp();
-            if (memed) Console.WriteLine("xd");
+            if (memed)
+            {
+                foreach (var c in clickcallbacks)
+                {
+                    c();
+                }
+            }
             dememe();
         }
 
@@ -38,13 +47,22 @@ namespace pws
         private void meme()
         {
             memed = true;
-            backcolor = Color.DimGray;
         }
 
         private void dememe()
         {
             memed = false;
-            backcolor = Color.Gainsboro;
+        }
+
+        private Color pressColor = Color.FromArgb(50, 0x33, 0x3, 0x33);
+
+        public override void draw(DrawerMaym dm)
+        {
+            base.draw(dm);
+            if (memed)
+            {
+                dm.fillRectange(pressColor, 0, 0, width, height);
+            }
         }
     }
 }
