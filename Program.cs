@@ -24,17 +24,18 @@ namespace pws
             s.addElement(new Panel(0, 540, 1920, 540, Color.CadetBlue));
             s.addElement(new ImageBox(100, 200, 400, 400, Textures.memex, new Box(0.4, 0.2, 0.5, 0.5)));
             s.addElement(new TextBox(40, 40, 400, 100, "THESE HOES AINT LOYAL", FontFamille.font1));
-            
              */
 
-            s.addElement(new Button(100, 80, "PRESS ME"));
+            Panel p = new Panel(500, 500, 200, 200, Color.Firebrick);
+            Button b = new Button(40, 40, "X");
+            b.setLocation(80, 80);
+            p.addChild(b);
+
+            s.addElement(p);
 
 
             GUI.setScreen(s);
         }
-
-        public const int BACKSCREENWIDTH = 1920;
-        public const int BACKSCREENHEIGHT = 1080;
     }
 
     

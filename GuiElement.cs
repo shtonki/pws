@@ -17,6 +17,8 @@ namespace pws
 
         public Color backcolor { get; set; } = Color.Transparent;
 
+        public List<GuiElement> children { get; private set; }= new List<GuiElement>();
+
         public GuiElement()
         {
             width = 100;
@@ -50,7 +52,15 @@ namespace pws
             height = newheight;
         }
 
-        public abstract void draw(DrawerMaym dm);
+        public void addChild(GuiElement child)
+        {
+            children.Add(child);
+        }
+
+        public virtual void draw(DrawerMaym dm)
+        {
+            dm.fillRectange(backcolor, x, y, width, height);
+        }
 
         public virtual void mouseDown()
         {

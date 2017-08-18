@@ -19,9 +19,16 @@ namespace pws
             this.textures = textures;
         }
 
+        public void translate(int x, int y)
+        {
+            var tx = ((float)x)/Frame.BACKSCREENWIDTHd2;
+            var ty = ((float)y)/Frame.BACKSCREENHEIGHTd2;
+            GL.Translate(tx, -ty, 0);
+        }
+
         public void fillRectange(Color c, int x, int y, int width, int height)
         {
-            fillRectangeR(c, Box.boxifyScreen(x, y, width, height));
+            fillRectangeR(c, new Box(x, y, width, height));
         }
 
         private void fillRectangeR(Color c, Box b)
@@ -40,7 +47,7 @@ namespace pws
 
         public void drawTexture(Textures t, int x, int y, int width, int height, Box? cropbox = null)
         {
-            drawTextureR(t, Box.boxifyScreen(x, y, width, height), cropbox);
+            drawTextureR(t, new Box(x, y, width, height), cropbox);
         }
 
         private void drawTextureR(Textures tx, Box imageLocation, Box? crop = null)
@@ -88,11 +95,29 @@ namespace pws
             b = y + h;
         }
 
-        public static Box boxifyScreen(int x, int y, int w, int h)
+        public Box(PointF topLeft, PointF bottomRight) : this()
         {
-            return boxify(x, y, w, h, Program.BACKSCREENWIDTH / 2, Program.BACKSCREENHEIGHT / 2);
+            x = topLeft.X;
+            y = topLeft.Y;
+            r = bottomRight.X;
+            b = bottomRight.Y;
+            w = r - x;
+            h = b - y;
         }
 
+        public Box(int x, int y, int w, int h) : this(Frame.pixToGL(x, y), Frame.pixToGL(x + w, y + h))
+        {
+        }
+
+        /*
+        public static Box boxifyScreen(int x, int y, int w, int h)
+        {
+            var p1 = Frame.pixToGL(new Point(x, y));
+            var p2 = Frame.pixToGL(new Point(x+w, y+h));
+            return new Box(p1, p2);
+            //return boxify(x, y, w, h, Frame.BACKSCREENWIDTHd2, Frame.BACKSCREENHEIGHTd2);
+        }
+        /*
         public static Box boxify(int x, int y, int w, int h, int swd2, int shd2)
         {
             var sx = ((double)(x - swd2)) / swd2;
@@ -107,5 +132,6 @@ namespace pws
                 sh
                 );
         }
+        */
     }
 }

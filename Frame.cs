@@ -58,11 +58,23 @@ namespace pws
                 DrawerMaym dm = new DrawerMaym(textures);
                 foreach (var elem in activeScreen.elements)
                 {
-                    elem.draw(dm);
+                    drawElement(elem, dm);
                 }
             }
 
             this.SwapBuffers();
+        }
+
+        private void drawElement(GuiElement ge, DrawerMaym dm)
+        {
+            ge.draw(dm);
+
+            dm.translate(ge.x, ge.y);
+            foreach (var kid in ge.children)
+            {
+                drawElement(kid, dm);
+            }
+            dm.translate(-ge.x, -ge.y);
         }
 
         protected override void OnMouseDown(MouseButtonEventArgs e)
@@ -111,10 +123,31 @@ namespace pws
             return null;
         }
 
+
+        public static PointF pixToGL(int x, int y)
+        {
+            return pixToGL(new Point(x, y));
+        }
+
+        public static PointF pixToGL(Point p)
+        {
+            var sx = ((float)(p.X - BACKSCREENWIDTHd2)) / BACKSCREENWIDTHd2;
+            var sy = ((float)(p.Y - BACKSCREENHEIGHTd2)) / BACKSCREENHEIGHTd2;
+
+            return new PointF(sx, sy);
+        }
+
+
+
+        public const int BACKSCREENWIDTH = 1920;
+        public const int BACKSCREENHEIGHT = 1080;
+        public const int BACKSCREENWIDTHd2 = BACKSCREENWIDTH/2;
+        public const int BACKSCREENHEIGHTd2 = BACKSCREENHEIGHT/2;
+
         private Point scalePoint(Point p)
         {
-            double xs = ((double)Program.BACKSCREENWIDTH) / Width;
-            double ys = ((double)Program.BACKSCREENHEIGHT) / Height;
+            double xs = ((double)BACKSCREENWIDTH) / Width;
+            double ys = ((double)BACKSCREENHEIGHT) / Height;
 
             return new Point((int)Math.Round(p.X*xs), (int)Math.Round(p.Y*ys));
         }
@@ -163,5 +196,6 @@ namespace pws
 
             return id;
         }
+
     }
 }
