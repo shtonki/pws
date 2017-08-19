@@ -83,6 +83,7 @@ namespace pws
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
+            focus(hovered);
             hovered?.onMouseDown(e);
         }
 
@@ -93,6 +94,7 @@ namespace pws
         }
 
         private GuiElement hovered;
+        private GuiElement focused;
 
         protected override void OnMouseMove(MouseMoveEventArgs e)
         {
@@ -107,6 +109,21 @@ namespace pws
             hovered = newover;
         }
 
+        protected override void OnKeyDown(KeyboardKeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+            focused?.onKeyDown(e);
+        }
+
+        private void focus(GuiElement f)
+        {
+            if (f == null) return;
+            if (f.focus())
+            {
+                focused.unfocus();
+                focused = f;
+            }
+        }
 
         private GuiElement elementAt(Point p)
         {

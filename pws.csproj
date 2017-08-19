@@ -52,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Border.cs" />
     <Compile Include="src\Elements\Button.cs" />
+    <Compile Include="src\Elements\InputBox.cs" />
     <Compile Include="src\Elements\MemeButton.cs" />
     <Compile Include="src\Elements\TextLayout.cs" />
     <Compile Include="src\Elements\Winduh.cs" />

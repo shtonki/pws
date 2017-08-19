@@ -16,6 +16,11 @@ namespace pws
         public bool multilineText { get; set; }
         public FontFamille fontFamily { get; set; } = FontFamille.font1;
 
+        public Border border;
+
+        public Square() : base(0, 0, 100, 100)
+        {
+        }
 
         public Square(int x, int y, int width, int height) : base(x, y, width, height)
         {
@@ -43,6 +48,8 @@ namespace pws
 
         private TextLayout textLayout;
 
+        private int ctr = 0;
+
         public override void draw(DrawerMaym dm)
         {
             if (backimege == null)
@@ -56,11 +63,23 @@ namespace pws
 
             textLayout?.draw(dm, x, y);
 
-            
-            dm.drawTexture(Textures.border0, x, y, width, 4,          new Box(0.0, 0.0, 0.4, 0.4));
-            dm.drawTexture(Textures.border0, x, y, 4, height,         new Box(0.0, 0.0, 0.4, 0.4));
-            dm.drawTexture(Textures.border0, x, y+height-4, width, 4, new Box(0.0, 0.0, 0.4, 0.4));
-            dm.drawTexture(Textures.border0, x+width-4, y, 4, height, new Box(0.0, 0.0, 0.4, 0.4));
+            ctr++;
+            if (ctr > 1000) ctr = 0;
+
+            var d1 = ctr/6000.0;
+            var d2 = ctr/6000.0;
+            var d3 = ctr/6000.0;
+            var d4 = ctr/6000.0;
+            var b1 = new Box(d1, d4, d1+0.4, d4+0.4);
+            var b2 = new Box(d2, d3, d2+0.4, d3+0.4);
+            var b3 = new Box(d3, d2, d3+0.4, d2+0.4);
+            var b4 = new Box(d4, d1, d4+0.4, d1+0.4);
+
+
+            dm.drawTexture(Textures.border0, x, y, width, 4,          b1);
+            dm.drawTexture(Textures.border0, x, y, 4, height,         b2);
+            dm.drawTexture(Textures.border0, x, y+height-4, width, 4, b3);
+            dm.drawTexture(Textures.border0, x+width-4, y, 4, height, b4);
         }
     }
 }

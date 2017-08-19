@@ -27,6 +27,9 @@ namespace pws
                 e.setText("THESE HOES AINT LOYAL");
                 s.addElement(e);
             }
+
+            s.addElement(new InputBox());
+
             GUI.setScreen(s);
         }
     }

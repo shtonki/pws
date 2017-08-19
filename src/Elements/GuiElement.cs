@@ -16,7 +16,9 @@ namespace pws
                
         public int width { get; set; }
         public int height { get; set; }
-
+        
+        public bool focused { get; private set; }
+        public bool selectable { get; set; }
 
         public List<GuiElement> children { get; private set; }= new List<GuiElement>();
         public GuiElement parent { get; private set; }
@@ -47,6 +49,17 @@ namespace pws
             child.parent = this;
         }
 
+        public bool focus()
+        {
+            if (selectable) focused = true;
+            return selectable;
+        }
+
+        public void unfocus()
+        {
+            focused = false;
+        }
+
         public abstract void draw(DrawerMaym dm);
 
         public virtual void onMouseDown(MouseButtonEventArgs args)
@@ -64,6 +77,11 @@ namespace pws
             mouseLeft?.Invoke(args);
         }
 
+        public virtual void onKeyDown(KeyboardKeyEventArgs args)
+        {
+            keyDown?.Invoke(args);
+        }
+
         public virtual void onMouseEnter(MouseMoveEventArgs args)
         {
 
@@ -71,11 +89,12 @@ namespace pws
 
         public delegate void  mouseClickEventHandler(MouseButtonEventArgs args);
         public delegate void mouseMoveEventHandler(MouseMoveEventArgs args);
-
+        public delegate void keyboardEvent(KeyboardKeyEventArgs args);
 
         public event mouseClickEventHandler mouseDown;
         public event mouseClickEventHandler mouseUp;
         public event mouseMoveEventHandler mouseLeft;
+        public event keyboardEvent keyDown;
 
     }
 }
