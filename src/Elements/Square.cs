@@ -9,14 +9,47 @@ namespace pws
 {
     class Square : GuiElement
     {
-        public Color backcolor { get; set; } = Color.Transparent;
-        public Imege backimege { get; set; }
+        private Color bclr = Color.Transparent;
+        private Imege backimege;
+        private string text = "";
+        private bool multilineText;
+        private FontFamille fontFamily = FontFamille.font1;
 
-        public string text { get; private set; } = "";
-        public bool multilineText { get; set; }
-        public FontFamille fontFamily { get; set; } = FontFamille.font1;
+        public Color Backcolor
+        {
+            get { return bclr; }
+            set { bclr = value; }
+        }
 
-        public Border border;
+        public Imege Backimege
+        {
+            get { return backimege; }
+            set { backimege = value; }
+        }
+
+        public string Text
+        {
+            get { return text; }
+            set
+            {
+                text = value;
+                layoutText();
+            }
+        }
+
+        public bool MultilineText
+        {
+            get { return multilineText; }
+            set { multilineText = value; }
+        }
+
+        public FontFamille FontFamily
+        {
+            get { return fontFamily; }
+            set { fontFamily = value; }
+        }
+
+        public Border Border { get; set; }
 
         public Square() : base(0, 0, 100, 100)
         {
@@ -32,54 +65,29 @@ namespace pws
 
         public Square(int x, int y, int width, int height, Color backgroundColor) : base(x, y, width, height)
         {
-            backcolor = backgroundColor;
-        }
-
-        public void setText(string txt)
-        {
-            text = txt;
-            layoutText();
+            Backcolor = backgroundColor;
         }
 
         private void layoutText()
         {
-            textLayout = TextLayout.multiLineLayout(text, width, height, fontFamily);
+            textLayout = TextLayout.multiLineLayout(Text, width, height, FontFamily);
         }
 
         private TextLayout textLayout;
 
-        private int ctr = 0;
-
         public override void draw(DrawerMaym dm)
         {
-            if (backimege == null)
+            if (Backimege == null)
             {
-                dm.fillRectange(backcolor, x, y, width, height);
+                dm.fillRectange(Backcolor, x, y, width, height);
             }
             else
             {
-                dm.drawImege(backimege, x, y, width, height);
+                dm.drawImege(Backimege, x, y, width, height);
             }
 
             textLayout?.draw(dm, x, y);
-
-            ctr++;
-            if (ctr > 1000) ctr = 0;
-
-            var d1 = ctr/6000.0;
-            var d2 = ctr/6000.0;
-            var d3 = ctr/6000.0;
-            var d4 = ctr/6000.0;
-            var b1 = new Box(d1, d4, d1+0.4, d4+0.4);
-            var b2 = new Box(d2, d3, d2+0.4, d3+0.4);
-            var b3 = new Box(d3, d2, d3+0.4, d2+0.4);
-            var b4 = new Box(d4, d1, d4+0.4, d1+0.4);
-
-
-            dm.drawTexture(Textures.border0, x, y, width, 4,          b1);
-            dm.drawTexture(Textures.border0, x, y, 4, height,         b2);
-            dm.drawTexture(Textures.border0, x, y+height-4, width, 4, b3);
-            dm.drawTexture(Textures.border0, x+width-4, y, 4, height, b4);
+            Border?.draw(dm, x, y, width, height);
         }
     }
 }

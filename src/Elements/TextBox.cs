@@ -21,12 +21,12 @@ namespace pws
         {
             this.text = text;
             this.ff = ff;
-            backcolor = Color.AntiqueWhite;
+            Backcolor = Color.AntiqueWhite;
         }
 
         public override void draw(DrawerMaym dm)
         {
-            dm.fillRectange(backcolor, x, y, width, height);
+            dm.fillRectange(Backcolor, x, y, width, height);
 
             int p = 0;
 

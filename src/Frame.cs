@@ -120,7 +120,7 @@ namespace pws
             if (f == null) return;
             if (f.focus())
             {
-                focused.unfocus();
+                focused?.unfocus();
                 focused = f;
             }
         }

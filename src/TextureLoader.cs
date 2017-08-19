@@ -30,6 +30,8 @@ namespace pws
         buttonbg2,
 
         border0,
+        border1,
+        border2,
     };
 
     public static class ImageLoader
@@ -51,6 +53,8 @@ namespace pws
             images[Textures.buttonbg1] = Resources.buttonbg1;
             images[Textures.buttonbg2] = Resources.buttonbg2;
             images[Textures.border0] = Resources.border0;
+            images[Textures.border1] = Resources.border1;
+            images[Textures.border2] = Resources.border2;
         }
 
         public static Size sizeOf(Textures t)

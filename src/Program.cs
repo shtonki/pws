@@ -24,7 +24,8 @@ namespace pws
             {
                 var e = new MemeButton(800, 80);
                 e.setLocation(500, 100 + i*100);
-                e.setText("THESE HOES AINT LOYAL");
+                e.Text = "THESE HOES AINT LOYAL";
+                e.Border = new AnimatedBorder(Textures.border2, 4);
                 s.addElement(e);
             }
 
