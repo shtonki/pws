@@ -9,11 +9,13 @@ namespace pws
 {
     class Square : GuiElement
     {
+        public int textPadding;
+
         private Color bclr = Color.Transparent;
         private Imege backimege;
         private string text = "";
-        private bool multilineText;
         private FontFamille fontFamily = FontFamille.font1;
+        private TextLayout textLayout = new SingleLineFitLayout();
 
         public Color Backcolor
         {
@@ -37,12 +39,6 @@ namespace pws
             }
         }
 
-        public bool MultilineText
-        {
-            get { return multilineText; }
-            set { multilineText = value; }
-        }
-
         public FontFamille FontFamily
         {
             get { return fontFamily; }
@@ -50,6 +46,16 @@ namespace pws
         }
 
         public Border Border { get; set; }
+
+        public TextLayout TextLayout
+        {
+            get { return textLayout; }
+            set
+            {
+                textLayout = value;
+                layoutText();
+            }
+        }
 
         public Square() : base(0, 0, 100, 100)
         {
@@ -70,10 +76,10 @@ namespace pws
 
         private void layoutText()
         {
-            textLayout = TextLayout.multiLineLayout(Text, width, height, FontFamily);
+            laidText = TextLayout.layout(Text, width, height, FontFamily);
         }
 
-        private TextLayout textLayout;
+        protected LaidText laidText;
 
         public override void draw(DrawerMaym dm)
         {
@@ -86,7 +92,7 @@ namespace pws
                 dm.drawImege(Backimege, x, y, width, height);
             }
 
-            textLayout?.draw(dm, x, y);
+            laidText?.draw(dm, x, y, textPadding, width);
             Border?.draw(dm, x, y, width, height);
         }
     }

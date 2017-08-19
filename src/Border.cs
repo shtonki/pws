@@ -85,10 +85,6 @@ namespace pws
             }
             ypos += animationspeed;
 
-            Console.WriteLine(ypos);
-
-
-
             dm.drawTexture(texture, x, y, width, thickness, 
                 new Box(offset, ypos, cropskip, cropthickness)); //top
 

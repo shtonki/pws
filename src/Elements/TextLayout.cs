@@ -4,23 +4,53 @@ using System.Collections.Generic;
 
 namespace pws
 {
-    class TextLayout
+    class LaidText
     {
-        private List<x> xs;
-        private FontFamille ff;
-        private double tw;
-        private int charHeight;
+        public List<characterLayout> xs { get; }
+        public FontFamille ff { get; }
+        public int charHeight { get; }
 
-        public TextLayout(List<x> xs, FontFamille ff, int charHeight)
+        public LaidText(List<characterLayout> xs, FontFamille ff, int charHeight)
         {
             this.xs = xs;
             this.ff = ff;
             this.charHeight = charHeight;
         }
 
-        public static TextLayout singleLineLayout(string text, int width, int height, FontFamille ff)
+        public void draw(DrawerMaym dm, int x, int y, int xoffset, int maxWidth)
         {
-            List<x> xs = new List<x>();
+            foreach (var xdd in xs)
+            {
+                var xp = xdd.xpos + xoffset;
+                if (xp >= 0 && xp + xdd.width < maxWidth)
+                {
+                    dm.drawTexture(
+                        ff.fontImage,
+                        x + xdd.xpos + xoffset,
+                        y + xdd.ypos,
+                        xdd.width,
+                        charHeight,
+                        xdd.crop);
+                }
+            }
+        }
+    }
+
+    abstract class TextLayout
+    {
+        private List<characterLayout> xs;
+        private FontFamille ff;
+        private double tw;
+        private int charHeight;
+
+        public abstract LaidText layout(string text, int width, int height, FontFamille ff);
+    }
+
+    class SingleLineFitLayout : TextLayout
+    {
+        public override LaidText layout(string text, int width, int height, FontFamille ff)
+        {
+            List<characterLayout> xs = new List<characterLayout>();
             int p = 0;
 
             var sz = ImageLoader.sizeOf(ff.fontImage);
@@ -33,16 +63,45 @@ namespace pws
             {
                 var v = ff.characters[c.ToString()];
 
-                int rw = (int)(v.width*width/tw);
+                int rw = (int)(v.width * width / tw);
 
-                xs.Add(new x(v, p, 0, rw, new Box(v.startx/w, 0, v.width/w, 1)));
+                xs.Add(new characterLayout(p, 0, rw, new Box(v.startx / w, 0, v.width / w, 1)));
                 p += rw;
             }
-
-            return new TextLayout(xs, ff, height);
+            return new LaidText(xs, ff, height);
         }
+    }
 
-        public static TextLayout multiLineLayout(string text, int width, int height, FontFamille ff, int minsize = 1, int maxsize = Int32.MaxValue)
+    class SingleLineLayout : TextLayout
+    {
+        public override LaidText layout(string text, int width, int height, FontFamille ff)
+        {
+            int xpos = 0;
+            List<characterLayout> xlist = new List<characterLayout>();
+            var sz = ImageLoader.sizeOf(ff.fontImage);
+            double w = (double)sz.Width;
+            double h = (double)sz.Height;
+
+            double scale = ((double)height) / h;
+
+            foreach (char c in text)
+            {
+                glyphxd v = ff.characters[c.ToString()];
+                var charwidth = v.width * scale;
+                xlist.Add(new characterLayout(xpos, 0, (int)charwidth, new Box(v.startx/w, 0, v.width/w, 1)));
+                xpos += (int)charwidth;
+            }
+
+            return new LaidText(xlist, ff, height);
+        }
+    }
+
+    class MultiLineFitLayout : TextLayout
+    {
+        private int minsize = 1;
+        private int maxsize = Int32.MaxValue;
+
+        public override LaidText layout(string text, int width, int height, FontFamille ff)
         {
             var words = text.Split(' ');
 
@@ -50,15 +109,15 @@ namespace pws
             double w = (double)sz.Width;
             double h = (double)sz.Height;
 
-            List<x> candidate = null;
+            List<characterLayout> candidate = null;
 
             for (int fontheight = minsize; fontheight < maxsize; fontheight++)
             {
                 int xpos = 0;
                 int ypos = 0;
 
-                List<x> xlist = new List<x>();
-                double scale = ((double)fontheight)/h;
+                List<characterLayout> xlist = new List<characterLayout>();
+                double scale = ((double)fontheight) / h;
 
                 foreach (string wrd in words)
                 {
@@ -67,7 +126,7 @@ namespace pws
                     foreach (char c in wrd)
                     {
                         glyphxd v = ff.characters[c.ToString()];
-                        var charwidth = v.width*scale;
+                        var charwidth = v.width * scale;
                         wordwidth += (int)charwidth;
                     }
 
@@ -77,16 +136,16 @@ namespace pws
                         ypos += fontheight;
                     }
 
-                    if (ypos + fontheight> height || wordwidth > width)
+                    if (ypos + fontheight > height || wordwidth > width)
                     {
-                        return new TextLayout(candidate, ff, fontheight-1);
+                        return new LaidText(candidate, ff, fontheight - 1);
                     }
 
                     foreach (char c in wrd)
                     {
                         glyphxd v = ff.characters[c.ToString()];
                         var charwidth = v.width * scale;
-                        xlist.Add(new x(v, xpos, ypos, (int)charwidth, new Box(v.startx/w, 0, v.width/w, 1)));
+                        xlist.Add(new characterLayout(xpos, ypos, (int)charwidth, new Box(v.startx / w, 0, v.width / w, 1)));
                         xpos += (int)charwidth;
                     }
 
@@ -100,43 +159,21 @@ namespace pws
 
             throw new Exception();
         }
+    }
 
-        private static void wordify(string text)
+    public struct characterLayout
+    {
+        public int xpos;
+        public int ypos;
+        public int width;
+        public Box crop;
+
+        public characterLayout(int xpos, int ypos, int width, Box crop)
         {
-            
-        }
-
-        public void draw(DrawerMaym dm, int x, int y)
-        {
-            foreach (var xdd in xs)
-            {
-                dm.drawTexture(
-                    ff.fontImage,
-                    x + xdd.xpos,
-                    y + xdd.ypos,
-                    xdd.rw,
-                    charHeight,
-                    xdd.crop);
-
-            }
-        }
-
-        public struct x
-        {
-            public glyphxd glyph;
-            public int xpos;
-            public int ypos;
-            public int rw;
-            public Box crop;
-
-            public x(glyphxd glyph, int xpos, int ypos, int rw, Box crop)
-            {
-                this.glyph = glyph;
-                this.xpos = xpos;
-                this.ypos = ypos;
-                this.rw = rw;
-                this.crop = crop;
-            }
+            this.xpos = xpos;
+            this.ypos = ypos;
+            this.width = width;
+            this.crop = crop;
         }
     }
 }

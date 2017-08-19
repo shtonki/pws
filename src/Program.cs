@@ -26,10 +26,13 @@ namespace pws
                 e.setLocation(500, 100 + i*100);
                 e.Text = "THESE HOES AINT LOYAL";
                 e.Border = new AnimatedBorder(Textures.border2, 4);
+                e.TextLayout = new MultiLineFitLayout();
                 s.addElement(e);
             }
 
-            s.addElement(new InputBox());
+            var v = new InputBox(500, 100);
+            v.setLocation(400, 0);
+            s.addElement(v);
 
             GUI.setScreen(s);
         }
