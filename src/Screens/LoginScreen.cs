@@ -41,10 +41,11 @@ namespace pws
             passwordLabel.moveTo(MoveTo.Center, 340);
             passwordLabel.Text = "PASSVORD";
 
-            loginButton = new MemeButton(500, 100);
+            loginButton = new MemeButton(500, 80);
             addElement(loginButton);
             loginButton.moveTo(MoveTo.Center, 550);
-            loginButton.Text = "LOGIN";
+            loginButton.Text = "LOG IN";
+            loginButton.Border = new AnimatedBorder(Textures.border0, 5);
         }
     }
 }
