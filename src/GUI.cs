@@ -22,7 +22,7 @@ namespace pws
         private static void launchEx(object o)
         {
             ManualResetEventSlim loadre = (ManualResetEventSlim)o;
-            frame = new Frame(1280, 720, loadre);
+            frame = new Frame(1280, 720, loadre, true);
             frame.Run(100, 0);
         }
 

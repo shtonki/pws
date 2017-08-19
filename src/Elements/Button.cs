@@ -37,7 +37,7 @@ namespace pws
 
             if (pressed)
             {
-                dm.fillRectange(pressedColor, x, y, width, height);
+                dm.fillRectange(pressedColor, X, Y, Width, Height);
             }
         }
 

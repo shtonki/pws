@@ -74,9 +74,20 @@ namespace pws
             Backcolor = backgroundColor;
         }
 
+        public Square(int width, int height, Color backgroundColor) : base(0, 0, width, height)
+        {
+            Backcolor = backgroundColor;
+        }
+
+        public override void onResize(resizeEventStruct args)
+        {
+            base.onResize(args);
+            layoutText();
+        }
+
         private void layoutText()
         {
-            laidText = TextLayout.layout(Text, width, height, FontFamily);
+            laidText = TextLayout.layout(Text, Width, Height, FontFamily);
         }
 
         protected LaidText laidText;
@@ -85,15 +96,15 @@ namespace pws
         {
             if (Backimege == null)
             {
-                dm.fillRectange(Backcolor, x, y, width, height);
+                dm.fillRectange(Backcolor, X, Y, Width, Height);
             }
             else
             {
-                dm.drawImege(Backimege, x, y, width, height);
+                dm.drawImege(Backimege, X, Y, Width, Height);
             }
 
-            laidText?.draw(dm, x, y, textPadding, width);
-            Border?.draw(dm, x, y, width, height);
+            laidText?.draw(dm, X, Y, textPadding, Width);
+            Border?.draw(dm, X, Y, Width, Height);
         }
     }
 }

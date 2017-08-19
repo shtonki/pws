@@ -51,7 +51,7 @@ namespace pws
 
         public override void draw(DrawerMaym dm)
         {
-            dm.drawTexture(texture, x, y, width, height, crop);
+            dm.drawTexture(texture, X, Y, Width, Height, crop);
         }
     }
 }

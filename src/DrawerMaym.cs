@@ -115,18 +115,18 @@ namespace pws
         }
 
         /*
-        public static Box boxifyScreen(int x, int y, int w, int h)
+        public static Box boxifyScreen(int X, int Y, int w, int h)
         {
-            var p1 = Frame.pixToGL(new Point(x, y));
-            var p2 = Frame.pixToGL(new Point(x+w, y+h));
+            var p1 = Frame.pixToGL(new Point(X, Y));
+            var p2 = Frame.pixToGL(new Point(X+w, Y+h));
             return new Box(p1, p2);
-            //return boxify(x, y, w, h, Frame.BACKSCREENWIDTHd2, Frame.BACKSCREENHEIGHTd2);
+            //return boxify(X, Y, w, h, Frame.BACKSCREENWIDTHd2, Frame.BACKSCREENHEIGHTd2);
         }
         /*
-        public static Box boxify(int x, int y, int w, int h, int swd2, int shd2)
+        public static Box boxify(int X, int Y, int w, int h, int swd2, int shd2)
         {
-            var sx = ((double)(x - swd2)) / swd2;
-            var sy = ((double)(y - shd2)) / shd2;
+            var sx = ((double)(X - swd2)) / swd2;
+            var sy = ((double)(Y - shd2)) / shd2;
             var sw = ((double)(w - 0)) / swd2;
             var sh = ((double)(h - 0)) / shd2;
 

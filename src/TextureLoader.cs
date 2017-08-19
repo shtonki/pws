@@ -24,6 +24,8 @@ namespace pws
 
         bg0,
         bg1,
+        bg2,
+        bg3,
 
         buttonbg0,
         buttonbg1,
@@ -49,6 +51,8 @@ namespace pws
             images[Textures.memex] = Resources.memex;
             images[Textures.bg0] = Resources.background0;
             images[Textures.bg1] = Resources.background1;
+            images[Textures.bg2] = Resources.background2;
+            images[Textures.bg3] = Resources.background3;
             images[Textures.buttonbg0] = Resources.buttonbg0;
             images[Textures.buttonbg1] = Resources.buttonbg1;
             images[Textures.buttonbg2] = Resources.buttonbg2;

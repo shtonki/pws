@@ -26,7 +26,7 @@ namespace pws
 
         public override void draw(DrawerMaym dm)
         {
-            dm.fillRectange(Backcolor, x, y, width, height);
+            dm.fillRectange(Backcolor, X, Y, Width, Height);
 
             int p = 0;
 
@@ -40,11 +40,11 @@ namespace pws
             {
                 var v = ff.characters[c.ToString()];
 
-                int rw = (int)(v.width*width/tw);
+                int rw = (int)(v.width*Width/tw);
 
                 dm.drawTexture(
                     ff.fontImage,
-                    x + p, y, rw, height,
+                    X + p, Y, rw, Height,
                     new Box(v.startx/w, 0, v.width/w, 1)
                     );
 

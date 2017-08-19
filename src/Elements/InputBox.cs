@@ -50,9 +50,9 @@ namespace pws
 
 
             int textWidth = laidText.xs.Sum(cl => cl.width);
-            if (textWidth > width)
+            if (textWidth > Width)
             {
-                textPadding = width - textWidth - 8;
+                textPadding = Width - textWidth - 8;
             }
             else
             {
@@ -73,7 +73,7 @@ namespace pws
 
             if (focused && caretBlinkCounter < 40)
             {
-                dm.fillRectange(Color.Black, x + caretPosition, y + 5, 7, height - 10);
+                dm.fillRectange(Color.Black, X + caretPosition, Y + 5, 7, Height - 10);
             }
         }
     }

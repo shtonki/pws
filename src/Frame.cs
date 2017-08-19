@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
@@ -21,12 +21,25 @@ namespace pws
 
         private ManualResetEventSlim loadre;
 
-        public Frame(int width, int height, ManualResetEventSlim ld = null) : base(width, height)
+        private Designer designer;
+
+        public Frame(int width, int height, ManualResetEventSlim ld = null, bool design = false) : base(width, height)
         {
             loadre = ld;
 
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+
+            if (design)
+            {
+                Thread t = new Thread(() =>
+                {
+                    designer = new Designer();
+                    Application.Run(designer);
+                });
+
+                t.Start();
+            }
         }
 
         public void setScreen(Screen screen)
@@ -72,12 +85,12 @@ namespace pws
         {
             ge.draw(dm);
 
-            dm.translate(ge.x, ge.y);
+            dm.translate(ge.X, ge.Y);
             foreach (var kid in ge.children)
             {
                 drawElement(kid, dm);
             }
-            dm.translate(-ge.x, -ge.y);
+            dm.translate(-ge.X, -ge.Y);
         }
 
         protected override void OnMouseDown(MouseButtonEventArgs e)
@@ -85,6 +98,7 @@ namespace pws
             base.OnMouseDown(e);
             focus(hovered);
             hovered?.onMouseDown(e);
+            designer?.setActive(hovered);
         }
 
         protected override void OnMouseUp(MouseButtonEventArgs e)
@@ -142,16 +156,16 @@ namespace pws
 
                 foreach (var v in l)
                 {
-                    if (v.x < x &&
-                        v.x + v.width > x &&
-                        v.y < y &&
-                        v.y + v.height > y)
+                    if (v.X < x &&
+                        v.X + v.Width > x &&
+                        v.Y < y &&
+                        v.Y + v.Height > y)
                     {
                         r = v;
                         l = v.children;
                         c = true;
-                        x -= v.x;
-                        y -= v.y;
+                        x -= v.X;
+                        y -= v.Y;
                     }
                 }
 

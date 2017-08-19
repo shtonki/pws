@@ -14,7 +14,8 @@ namespace pws
 
         public static void buildFont(Textures fontimage, string glyphstring)
         {
-            Screen s = new Screen();
+            throw new Exception();
+            Screen s = new LoginScreen();
             GUI.setScreen(s);
 
             var bp = new Square(0, 0, 500, 500, Color.LightCoral);

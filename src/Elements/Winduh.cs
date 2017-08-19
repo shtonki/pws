@@ -11,11 +11,11 @@ namespace pws
     {
         public Winduh(GuiElement g)
         {
-            width = g.width;
-            height = g.height + 20;
+            Width = g.Width;
+            Height = g.Height + 20;
             g.setLocation(0, 20);
 
-            //Button b = new Button(width, 20);
+            //Button b = new Button(Width, 20);
 
             //addChild(b);
             addChild(g);
