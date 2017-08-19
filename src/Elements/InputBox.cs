@@ -10,6 +10,8 @@ namespace pws
 {
     class InputBox : Square
     {
+        private int caretPosition;
+
         public InputBox(int width, int height) : base(width, height)
         {
             TextLayout = new SingleLineLayout();
@@ -43,17 +45,35 @@ namespace pws
             if (c.HasValue)
             {
                 Text = Text + c.Value;
+                caretBlinkCounter = 0;
             }
 
 
             int textWidth = laidText.xs.Sum(cl => cl.width);
             if (textWidth > width)
             {
-                textPadding = width - textWidth - 1;
+                textPadding = width - textWidth - 8;
             }
             else
             {
                 textPadding = 0;
+            }
+
+            caretPosition = textPadding + textWidth;
+        }
+
+        private int caretBlinkCounter;
+
+        public override void draw(DrawerMaym dm)
+        {
+            base.draw(dm);
+
+            caretBlinkCounter++;
+            if (caretBlinkCounter > 80) caretBlinkCounter = 0;
+
+            if (focused && caretBlinkCounter < 40)
+            {
+                dm.fillRectange(Color.Black, x + caretPosition, y + 5, 7, height - 10);
             }
         }
     }
