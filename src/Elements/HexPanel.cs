@@ -30,9 +30,19 @@ namespace pws
         public override void onMouseDown(MouseButtonEventArgs args)
         {
             base.onMouseDown(args);
-            var p = args.Position;
+
+            var v = xd(args.Position);
+            if (v != null)
+            {
+                Console.WriteLine("{0} {1}", v.Item1, v.Item2);
+            }
+        }
+
+        private Tuple<int, int> xd(Point p)
+        {
             var mousex = p.X;
             var mousey = p.Y;
+
 
             int cx = 0;
             int cy = 0;
@@ -40,27 +50,37 @@ namespace pws
 
             for (int i = 0; i < xcount; i++)
             {
-                int os = (i%2)*hexsize/2;
+                int os = (i % 2) * hexsize / 2;
                 for (int j = 0; j < ycount; j++)
                 {
-                    int hexX = x + (int)(0.75*hexsize*i);
-                    int hexY = y + (j*hexsize + os);
+                    int hexX = x + (int)(0.75 * hexsize * i) + hexsize / 2;
+                    int hexY = y + (j * hexsize + os) + hexsize / 2;
 
                     int dx = hexX - mousex;
                     int dy = hexY - mousey;
 
-                    var td = Math.Sqrt(dx*dx + dy*dy);
-                    if (td < cd)
+
+
+                    if (Math.Abs(dx) < hexsize / 2 && Math.Abs(dy) < hexsize / 2)
                     {
-                        cx = i;
-                        cy = j;
-                        cd = td;
+                        var xd = Math.Abs(dx);
+                        var yd = Math.Abs(dy);
+
+                        if (xd < hexsize / 4)
+                        {
+                            return new Tuple<int, int>(i, j);
+                        }
+
+                        xd -= hexsize / 4;
+
+                        if (hexsize / 4 - yd / 2 > xd)
+                        {
+                            return new Tuple<int, int>(i, j);
+                        }
                     }
                 }
             }
-
-            Console.WriteLine("{0} {1}", cx, cy);
-
+            return null;
         }
 
         public override void draw(DrawerMaym dm)

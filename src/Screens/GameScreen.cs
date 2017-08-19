@@ -10,9 +10,9 @@ namespace pws
     {
         public GameScreen()
         {
-            var v = new HexPanel(4, 3, 60);
-            v.x = 800;
-            v.y = 800;
+            var v = new HexPanel(4, 3, 160);
+            v.x = 400;
+            v.y = 400;
             //v.moveTo(MoveTo.Center, MoveTo.Center);
             addElement(v);
         }
