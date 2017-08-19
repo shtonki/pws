@@ -45,6 +45,90 @@ namespace pws
             GL.End();
         }
 
+        public void fillHexagon(int x, int y, int size, Color border, Textures texture)
+        {
+            fillHexagonR(x, y, size, border, null, texture);
+        }
+
+        public void fillHexagon(int x, int y, int size, Color border, Color centre)
+        {
+            fillHexagonR(x, y, size, border, centre, null);
+        }
+
+        private void fillHexagonR(int x, int y, int size, Color border, Color? centre, Textures? t)
+        {
+            Box b = new Box(
+                x,
+                y + size,
+                size, 
+                size
+                );
+
+            if (t.HasValue)
+            {
+                var tx = t.Value;
+
+                GL.Enable(EnableCap.Texture2D);
+                GL.Color4(Color.FloralWhite);
+                GL.BindTexture(TextureTarget.Texture2D, textures[tx]);
+                GL.Begin(BeginMode.Polygon);
+
+                GL.TexCoord2(0, 0.5);
+                GL.Vertex2(b.x, -b.y + b.h/2);
+
+                GL.TexCoord2(0.25, 1);
+                GL.Vertex2(b.x + b.w/4, -b.y);
+
+                GL.TexCoord2(0.75, 1);
+                GL.Vertex2(b.x + b.w - b.w/4, -b.y);
+
+                GL.TexCoord2(1, 0.5);
+                GL.Vertex2(b.x + b.w, -b.y + b.h/2);
+
+                GL.TexCoord2(0.75, 0);
+                GL.Vertex2(b.x + b.w - b.w/4, -b.y + b.h);
+
+                GL.TexCoord2(0.25, 0);
+                GL.Vertex2(b.x + b.w/4, -b.y + b.h);
+
+                GL.TexCoord2(0, 0.5);
+                GL.Vertex2(b.x, -b.y + b.h/2);
+
+                GL.End();
+                GL.Disable(EnableCap.Texture2D);
+            }
+            else if (centre.HasValue)
+            {
+                GL.Color4(centre.Value);
+                GL.Begin(BeginMode.Polygon);
+
+                GL.Vertex2(b.x, -b.y + b.h/2);
+                GL.Vertex2(b.x + b.w/4, -b.y);
+                GL.Vertex2(b.x + b.w - b.w/4, -b.y);
+                GL.Vertex2(b.x + b.w, -b.y + b.h/2);
+                GL.Vertex2(b.x + b.w - b.w/4, -b.y + b.h);
+                GL.Vertex2(b.x + b.w/4, -b.y + b.h);
+                GL.Vertex2(b.x, -b.y + b.h/2);
+
+                GL.End();
+            }
+            else throw new Exception();
+
+            GL.Color4(border);
+            GL.Begin(BeginMode.LineLoop);
+
+            GL.Vertex2(b.x                , -b.y + b.h / 2);
+            GL.Vertex2(b.x + b.w / 4      , -b.y);
+            GL.Vertex2(b.x + b.w - b.w / 4, -b.y);
+            GL.Vertex2(b.x + b.w          , -b.y + b.h / 2);
+            GL.Vertex2(b.x + b.w - b.w / 4, -b.y + b.h);
+            GL.Vertex2(b.x + b.w / 4      , -b.y + b.h);
+            GL.Vertex2(b.x                , -b.y + b.h / 2);
+
+            GL.End();
+
+        }
+
         public void drawImege(Imege i, int x, int y, int width, int height)
         {
             drawTexture(i.texture, x, y, width, height, i.crop);

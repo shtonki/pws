@@ -96,6 +96,8 @@ namespace pws
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
+            e.Position = scalePoint(e.Position);
+
             focus(hovered);
             hovered?.onMouseDown(e);
             designer?.setActive(hovered);
@@ -104,6 +106,8 @@ namespace pws
         protected override void OnMouseUp(MouseButtonEventArgs e)
         {
             base.OnMouseDown(e);
+            e.Position = scalePoint(e.Position);
+
             hovered?.onMouseUp(e);
         }
 
@@ -113,6 +117,8 @@ namespace pws
         protected override void OnMouseMove(MouseMoveEventArgs e)
         {
             base.OnMouseMove(e);
+
+            e.Position = scalePoint(e.Position);
             var newover = elementAt(e.Position);
             
             if (newover != hovered)
@@ -139,11 +145,11 @@ namespace pws
             }
         }
 
-        private GuiElement elementAt(Point p)
+        private GuiElement elementAt(Point sp)
         {
             if (activeScreen == null) return null;
 
-            var sp = scalePoint(p);
+            //var sp = scalePoint(p);
 
             int x = sp.X;
             int y = sp.Y;
@@ -199,7 +205,6 @@ namespace pws
             base.OnResize(e);
             GL.Viewport(0, 0, Width, Height);
         }
-
 
         private Point scalePoint(Point p)
         {
