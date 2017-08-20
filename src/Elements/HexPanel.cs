@@ -91,8 +91,8 @@ namespace pws
                 int os = (i%2)*hexsize/2;
                 for (int j = 0; j < ycount; j++)
                 {
-                    int hexX = x + (int)(0.75*hexsize*i);
-                    int hexY = y + (j*hexsize + os);
+                    int hexX = (int)(0.75*hexsize*i);
+                    int hexY = j*hexsize + os;
 
                     if (i%2 == 0)
                     {

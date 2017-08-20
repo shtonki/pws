@@ -73,7 +73,7 @@ namespace pws
 
             if (focused && caretBlinkCounter < 40)
             {
-                dm.fillRectange(Color.Black, X + caretPosition, Y + 5, 7, Height - 10);
+                dm.fillRectange(Color.Black, caretPosition, 5, 7, Height - 10);
             }
         }
     }

@@ -44,7 +44,7 @@ namespace pws
 
                 dm.drawTexture(
                     ff.fontImage,
-                    X + p, Y, rw, Height,
+                    p, 0, rw, Height,
                     new Box(v.startx/w, 0, v.width/w, 1)
                     );
 

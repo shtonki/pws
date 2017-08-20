@@ -19,7 +19,7 @@ namespace pws
         public override void draw(DrawerMaym dm)
         {
             //base.draw(dm);
-            dm.drawTexture(Textures.cardframegrey, x, y, width, height);
+            dm.drawTexture(Textures.cardframegrey, 0, 0, width, height);
         }
     }
 }

@@ -84,13 +84,15 @@ namespace pws
 
         private void drawElement(GuiElement ge, DrawerMaym dm)
         {
+            dm.translate(ge.X, ge.Y);
+
             ge.draw(dm);
 
-            dm.translate(ge.X, ge.Y);
             foreach (var kid in ge.children)
             {
                 drawElement(kid, dm);
             }
+
             dm.translate(-ge.X, -ge.Y);
         }
 

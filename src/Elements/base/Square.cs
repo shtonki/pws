@@ -96,15 +96,15 @@ namespace pws
         {
             if (Backimege == null)
             {
-                dm.fillRectange(Backcolor, X, Y, Width, Height);
+                dm.fillRectange(Backcolor, 0, 0, width, height);
             }
             else
             {
-                dm.drawImege(Backimege, X, Y, Width, Height);
+                dm.drawImege(Backimege, 0, 0, Width, Height);
             }
 
-            laidText?.draw(dm, X, Y, textPadding, Width);
-            Border?.draw(dm, X, Y, Width, Height);
+            laidText?.draw(dm, 0, 0, textPadding, Width);
+            Border?.draw(dm, 0, 0, Width, Height);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace pws
     {
         public GameScreen()
         {
-            /*
+            /*/
             var v = new HexPanel(11, 7, 80);
             var p = new Square();
             p.width = v.width + 50;
@@ -24,7 +24,7 @@ namespace pws
             Square s = new Square(180, 280);
             s.Backimege = new Imege(Textures.cardframegrey);
             addElement(cv);
-            
+            //*/
         }
     }
 }

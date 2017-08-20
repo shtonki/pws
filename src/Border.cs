@@ -30,11 +30,10 @@ namespace pws
 
         public override void draw(DrawerMaym dm, int x, int y, int width, int height)
         {
-
-            dm.fillRectange(borderColor, x, y, width, 4); //top
-            dm.fillRectange(borderColor, x, y, 4, height); //left
-            dm.fillRectange(borderColor, x, y + height - 4, width, 4); //bottom
-            dm.fillRectange(borderColor, x + width - 4, y, 4, height); //right
+            dm.fillRectange(borderColor, 0, 0, width, 4); //top
+            dm.fillRectange(borderColor, 0, 0, 4, height); //left
+            dm.fillRectange(borderColor, 0, 0 + height - 4, width, 4); //bottom
+            dm.fillRectange(borderColor, 0 + width - 4, 0, 4, height); //right
         }
 
     }
@@ -85,16 +84,16 @@ namespace pws
             }
             ypos += animationspeed;
 
-            dm.drawTexture(texture, x, y, width, thickness, 
+            dm.drawTexture(texture, 0, 0, width, thickness, 
                 new Box(offset, ypos, cropskip, cropthickness)); //top
 
-            dm.drawTexture(texture, x, y, thickness, height,
+            dm.drawTexture(texture, 0, 0, thickness, height,
                 new Box(offset, ypos, cropthickness, cropskip)); //left
 
-            dm.drawTexture(texture, x, y + height - thickness, width, thickness,
+            dm.drawTexture(texture, 0, height - thickness, width, thickness,
                 new Box(offset, ypos + cropskip - cropthickness, cropsize, cropthickness)); //bottom
 
-            dm.drawTexture(texture, x + width - thickness, y, thickness, height,
+            dm.drawTexture(texture, width - thickness, 0, thickness, height,
                 new Box(offset + cropskip - cropthickness, ypos, cropthickness, cropskip)); //right
         }
 

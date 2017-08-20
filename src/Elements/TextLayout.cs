@@ -26,8 +26,8 @@ namespace pws
                 {
                     dm.drawTexture(
                         ff.fontImage,
-                        x + xdd.xpos + xoffset,
-                        y + xdd.ypos,
+                        xdd.xpos + xoffset,
+                        xdd.ypos,
                         xdd.width,
                         charHeight,
                         xdd.crop);
