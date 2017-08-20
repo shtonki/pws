@@ -21,10 +21,10 @@ namespace pws
 
             //FontBuilder.buildFont(Textures.fontovich, FontBuilder.xd);
 
-            LoginScreen loginScreen = new LoginScreen();
-            GameScreen gameScreen = new GameScreen();
+            LoginScreen l = new LoginScreen();
+            GameScreen g = new GameScreen();
 
-            GUI.setScreen(gameScreen);
+            GUI.setScreen(l);
         }
     }
 

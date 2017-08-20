@@ -56,6 +56,12 @@ namespace pws
             this.Height = height;
         }
 
+        public GuiElement(int width, int height)
+        {
+            this.width = width;
+            this.height = height;
+        }
+
         public void setLocation(int newx, int newy)
         {
             x = newx;

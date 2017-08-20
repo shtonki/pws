@@ -216,6 +216,16 @@ namespace pws.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap grey3 {
+            get {
+                object obj = ResourceManager.GetObject("grey3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap memex {
             get {
                 object obj = ResourceManager.GetObject("memex", resourceCulture);

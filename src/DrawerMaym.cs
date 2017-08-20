@@ -145,7 +145,7 @@ namespace pws
             Box cropx = crop == null ? new Box(0, 0, 1, 1) : crop.Value;
 
             GL.Enable(EnableCap.Texture2D);
-            GL.Color4(Color.White);
+            //GL.Color4(Color.White);
             GL.BindTexture(TextureTarget.Texture2D, textures[tx]);
             GL.Begin(PrimitiveType.Quads);
             
