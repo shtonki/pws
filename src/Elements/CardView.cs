@@ -13,13 +13,13 @@ namespace pws
 
         public CardView() : base(framewidth, frameheight)
         {
-            Backimege = new Imege(Textures.cardframegrey);
+            //Backimege = new Imege(Textures.cardframegrey);
         }
 
         public override void draw(DrawerMaym dm)
         {
-            base.draw(dm);
-            dm.drawTexture(Textures.A, X, Y, 50, 50);
+            //base.draw(dm);
+            dm.drawTexture(Textures.cardframegrey, x, y, width, height);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace pws
             LoginScreen l = new LoginScreen();
             GameScreen g = new GameScreen();
 
-            GUI.setScreen(l);
+            GUI.setScreen(g);
         }
     }
 

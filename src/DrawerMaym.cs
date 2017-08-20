@@ -69,7 +69,7 @@ namespace pws
                 var tx = t.Value;
 
                 GL.Enable(EnableCap.Texture2D);
-                GL.Color4(Color.FloralWhite);
+                GL.Color4(Color.White);
                 GL.BindTexture(TextureTarget.Texture2D, textures[tx]);
                 GL.Begin(BeginMode.Polygon);
 
@@ -142,10 +142,10 @@ namespace pws
 
         private void drawTextureR(Textures tx, Box imageLocation, Box? crop = null)
         {
-            Box cropx = crop == null ? new Box(0, 0, 1, 1) : crop.Value;
+            Box cropx = crop == null ? new Box(0.0, 0.0, 1.0, 1.0) : crop.Value;
 
             GL.Enable(EnableCap.Texture2D);
-            //GL.Color4(Color.White);
+            GL.Color4(Color.White);
             GL.BindTexture(TextureTarget.Texture2D, textures[tx]);
             GL.Begin(PrimitiveType.Quads);
             

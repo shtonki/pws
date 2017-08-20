@@ -19,11 +19,12 @@ namespace pws
             p.addChild(v);
             v.moveTo(MoveTo.Center, MoveTo.Center);
             addElement(p);
-            */
+            /*/
             CardView cv = new CardView();
             Square s = new Square(180, 280);
             s.Backimege = new Imege(Textures.cardframegrey);
             addElement(cv);
+            
         }
     }
 }
