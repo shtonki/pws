@@ -24,21 +24,20 @@ namespace pws
             this.xcount = xcount;
             this.ycount = ycount;
             this.hexsize = hexsize;
-            Backcolor = Color.Firebrick;
         }
 
         public override void onMouseDown(MouseButtonEventArgs args)
         {
             base.onMouseDown(args);
 
-            var v = xd(args.Position);
+            var v = findHexagon(args.Position);
             if (v != null)
             {
                 Console.WriteLine("{0} {1}", v.Item1, v.Item2);
             }
         }
 
-        private Tuple<int, int> xd(Point p)
+        private Tuple<int, int> findHexagon(Point p)
         {
             var mousex = p.X;
             var mousey = p.Y;
@@ -97,12 +96,12 @@ namespace pws
 
                     if (i%2 == 0)
                     {
-                        dm.fillHexagon(hexX, hexY, hexsize, Color.White, Textures.A);
+                        dm.fillHexagon(hexX, hexY, hexsize, Color.Black, Textures.A);
 
                     }
                     else
                     {
-                        dm.fillHexagon(hexX, hexY, hexsize, Color.White, Color.BlueViolet);
+                        dm.fillHexagon(hexX, hexY, hexsize, Color.Black, Color.AntiqueWhite);
                     }
                 }
             }

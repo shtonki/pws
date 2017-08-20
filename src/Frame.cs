@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenTK;
+using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 using pws.Properties;
@@ -23,8 +24,10 @@ namespace pws
 
         private Designer designer;
 
-        public Frame(int width, int height, ManualResetEventSlim ld = null, bool design = false) : base(width, height)
+        public Frame(int width, int height, ManualResetEventSlim ld = null, bool design = false) : base(width, height, new GraphicsMode(32,24,0,8), "Call of Anders")
         {
+            
+            
             loadre = ld;
 
             GL.Enable(EnableCap.Blend);

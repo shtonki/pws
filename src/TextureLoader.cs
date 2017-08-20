@@ -34,6 +34,8 @@ namespace pws
         border0,
         border1,
         border2,
+
+        table0,
     };
 
     public static class ImageLoader
@@ -59,6 +61,8 @@ namespace pws
             images[Textures.border0] = Resources.border0;
             images[Textures.border1] = Resources.border1;
             images[Textures.border2] = Resources.border2;
+
+            images[Textures.table0] = Resources.table0;
         }
 
         public static Size sizeOf(Textures t)

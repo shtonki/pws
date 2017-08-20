@@ -114,6 +114,7 @@ namespace pws
             }
             else throw new Exception();
 
+            GL.LineWidth(4);
             GL.Color4(border);
             GL.Begin(BeginMode.LineLoop);
 

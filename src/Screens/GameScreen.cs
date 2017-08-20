@@ -10,11 +10,15 @@ namespace pws
     {
         public GameScreen()
         {
-            var v = new HexPanel(4, 3, 160);
-            v.x = 400;
-            v.y = 400;
-            //v.moveTo(MoveTo.Center, MoveTo.Center);
-            addElement(v);
+            var v = new HexPanel(11, 7, 80);
+            var p = new Square();
+            p.width = v.width + 50;
+            p.height = v.height + 50;
+            p.Backimege = new Imege(Textures.table0);
+            p.addChild(v);
+            v.moveTo(MoveTo.Center, MoveTo.Center);
+
+            addElement(p);
         }
     }
 }
