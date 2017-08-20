@@ -78,8 +78,24 @@ namespace pws
 
         public void addChild(GuiElement child)
         {
+            if (child.parent != null) throw new Exception();
+            if (children.Contains(child)) throw new Exception();
             children.Add(child);
             child.parent = this;
+        }
+
+        public void removeChild(GuiElement child)
+        {
+            children.Remove(child);
+            child.parent = null;
+        }
+
+        public void clearChildren()
+        {
+            while (children.Count > 0)
+            {
+                removeChild(children[0]);
+            }
         }
 
         public bool focus()
@@ -147,19 +163,33 @@ namespace pws
 
         public abstract void draw(DrawerMaym dm);
 
+        protected bool pressed;
+
+        public virtual void onClick(MouseButtonEventArgs args)
+        {
+            clicked?.Invoke(args);
+        }
+
         public virtual void onMouseDown(MouseButtonEventArgs args)
         {
             mouseDown?.Invoke(args);
+            pressed = true;
         }
 
         public virtual void onMouseUp(MouseButtonEventArgs args)
         {
             mouseUp?.Invoke(args);
+            if (pressed)
+            {
+                onClick(args);
+            }
+            pressed = false;
         }
 
         public virtual void onMouseLeave(MouseMoveEventArgs args)
         {
             mouseLeft?.Invoke(args);
+            pressed = false;
         }
 
         public virtual void onKeyDown(KeyboardKeyEventArgs args)
@@ -185,6 +215,7 @@ namespace pws
         public event mouseClickEventHandler mouseDown;
         public event mouseClickEventHandler mouseUp;
         public event mouseMoveEventHandler mouseLeft;
+        public event mouseClickEventHandler clicked;
         public event keyboardEvent keyDown;
         public event resizeEvent resize;
     }

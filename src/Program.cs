@@ -13,7 +13,7 @@ namespace pws
     
     class Program
     {
-        public const bool design = true;
+        public const bool design = false;
 
         static void Main(string[] args)
         {

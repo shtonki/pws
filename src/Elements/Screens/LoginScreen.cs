@@ -22,13 +22,13 @@ namespace pws
             username = new InputBox(1000, 100);
             addElement(username);
             username.moveTo(MoveTo.Center, 200);
-            username.Border = new AnimatedBorder(Textures.border0, 5);
+            username.Border = new SolidBorder(3, Color.Black);
             username.Backcolor = Color.DimGray;
 
             password = new InputBox(1000, 100);
             addElement(password);
             password.moveTo(MoveTo.Center, 400);
-            password.Border = new AnimatedBorder(Textures.border0, 5);
+            password.Border = new SolidBorder(3, Color.Black);
             password.Backcolor = Color.DimGray;
 
             usernameLabel = new Square(220, 60);

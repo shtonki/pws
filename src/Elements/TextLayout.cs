@@ -46,28 +46,80 @@ namespace pws
         public abstract LaidText layout(string text, int width, int height, FontFamille ff);
     }
 
+    public enum Justify
+    {
+        Left,
+        Middle
+    };
+
     class SingleLineFitLayout : TextLayout
     {
+        private Justify justify;
+
+        public SingleLineFitLayout() : this(Justify.Middle)
+        {
+        }
+
+        public SingleLineFitLayout(Justify justify)
+        {
+            this.justify = justify;
+        }
+
         public override LaidText layout(string text, int width, int height, FontFamille ff)
         {
             List<characterLayout> xs = new List<characterLayout>();
-            int p = 0;
 
             var sz = ImageLoader.sizeOf(ff.fontImage);
             double w = (double)sz.Width;
             double h = (double)sz.Height;
 
-            var tw = (double)text.Sum(c => ff.characters[c.ToString()].width);
+            var sc = height/h;
+
+            var tw = (double)text.Sum(c => sc*ff.characters[c.ToString()].width);
+
+            int p;
+
+            if (tw < width)
+            {
+                //throw new Exception();
+            }
+
+
+            switch (justify)
+            {
+                case Justify.Left:
+                {
+                    p = 0;
+                } break;
+
+                case Justify.Middle:
+                {
+                    if (tw < width)
+                    {
+                        p = (int)((width - tw)/2);
+                    }
+                    else
+                    {
+                        p = 0;
+                    }
+                } break;
+
+                default: throw new Exception();
+            }
+
+            double ws = Math.Min((width - 1)/tw, 1);
 
             foreach (char c in text)
             {
                 var v = ff.characters[c.ToString()];
 
-                int rw = (int)(v.width * (width-1) / tw);
+                int rw = (int)(v.width*ws*sc);
+                //int rw = (int)Math.Min((v.width * (width-1) / tw), height);
 
                 xs.Add(new characterLayout(p, 0, rw, new Box(v.startx / w, 0, v.width / w, 1)));
                 p += rw;
             }
+            if (p >= width) throw new Exception();
             return new LaidText(xs, ff, height);
         }
     }

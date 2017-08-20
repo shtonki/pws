@@ -38,6 +38,8 @@ namespace pws
         table0,
 
         cardframegrey,
+
+        orbchaos,
     };
 
     public static class ImageLoader
@@ -49,7 +51,7 @@ namespace pws
         {
             images = new Dictionary<Textures, Image>();
 
-            images[Textures.A] = Resources.AlterFate;
+            images[Textures.A] = Resources.artMoratianBattleStandard;
             images[Textures.B] = Resources.AlterTime;
             images[Textures.fontovich] = Resources.noname;
             images[Textures.memex] = Resources.memex;
@@ -67,6 +69,8 @@ namespace pws
             images[Textures.table0] = Resources.table0;
 
             images[Textures.cardframegrey] = Resources.whiteframe4;
+
+            images[Textures.orbchaos] = Resources.chaos;
         }
 
         public static Size sizeOf(Textures t)
