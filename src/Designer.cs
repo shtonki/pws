@@ -1,5 +1,7 @@
 using System;
 using System.Drawing;
+using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace pws
@@ -45,6 +47,7 @@ namespace pws
             this.wallabar2 = new pws.wallabar();
             this.wallabar3 = new pws.wallabar();
             this.wallabar4 = new pws.wallabar();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.wallabar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallabar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallabar3)).BeginInit();
@@ -131,9 +134,20 @@ namespace pws
             this.wallabar4.TabIndex = 7;
             this.wallabar4.Value = 500;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(17, 299);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Designer
             // 
             this.ClientSize = new System.Drawing.Size(554, 349);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.wallabar4);
             this.Controls.Add(this.wallabar3);
             this.Controls.Add(this.wallabar2);
@@ -161,6 +175,7 @@ namespace pws
         private wallabar wallabar2;
         private wallabar wallabar3;
         private wallabar wallabar4;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button activeButton;
 
         public void setActive(GuiElement ge)
@@ -179,6 +194,21 @@ namespace pws
             label4.Text = "H: " + active.Height.ToString();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (active == null) return;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(".X = " + active.X + ";");
+            sb.AppendLine(".Y = " + active.Y + ";");
+            sb.AppendLine(".Width = " + active.Width + ";");
+            sb.AppendLine(".Height = " + active.Height + ";");
+
+            
+            Thread thread = new Thread(() => Clipboard.SetText(sb.ToString()));
+            thread.SetApartmentState(ApartmentState.STA); //Set the thread to STA
+            thread.Start();
+            thread.Join(); //Wait for the thread to end
+        }
     }
 
     class wallabar : TrackBar

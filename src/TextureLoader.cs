@@ -66,7 +66,7 @@ namespace pws
 
             images[Textures.table0] = Resources.table0;
 
-            images[Textures.cardframegrey] = Resources.grey3;
+            images[Textures.cardframegrey] = Resources.whiteframe4;
         }
 
         public static Size sizeOf(Textures t)

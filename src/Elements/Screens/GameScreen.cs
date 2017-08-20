@@ -21,8 +21,7 @@ namespace pws
             addElement(p);
             /*/
             CardView cv = new CardView();
-            Square s = new Square(180, 280);
-            s.Backimege = new Imege(Textures.cardframegrey);
+            //cv.Height = 400;
             addElement(cv);
             //*/
         }

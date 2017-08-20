@@ -82,7 +82,6 @@
     <Compile Include="src\Elements\Screens\GameScreen.cs" />
     <Compile Include="src\Elements\Screens\LoginScreen.cs" />
     <Compile Include="src\Elements\Screens\Screen.cs" />
-    <Compile Include="src\Elements\base\TextBox.cs" />
     <Compile Include="src\TextureLoader.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\grey3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\whiteframe4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

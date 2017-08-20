@@ -17,6 +17,34 @@ namespace pws
         private FontFamille fontFamily = FontFamille.font1;
         private TextLayout textLayout = new SingleLineFitLayout();
 
+        public void setSize(int width, int height, TextLayout layout = null)
+        {
+            base.Height = height;
+            base.Width = width;
+            if (layout != null) textLayout = layout;
+            onResize();
+        }
+
+        public override int Height
+        {
+            get { return base.Height; }
+            set
+            {
+                base.Height = value;
+                onResize();
+            }
+        }
+
+        public override int Width
+        {
+            get { return base.Width; }
+            set
+            {
+                base.Width = value;
+                onResize();
+            }
+        }
+
         public Color Backcolor
         {
             get { return bclr; }
@@ -79,9 +107,19 @@ namespace pws
             Backcolor = backgroundColor;
         }
 
+        public Square(int width, int height, string text) : base(0, 0, width, height)
+        {
+            Text = text;
+        }
+
         public override void onResize(resizeEventStruct args)
         {
             base.onResize(args);
+            layoutText();
+        }
+
+        private void onResize()
+        {
             layoutText();
         }
 

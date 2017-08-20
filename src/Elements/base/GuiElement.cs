@@ -36,13 +36,13 @@ namespace pws
             set { setLocation(x, value); }
         }
 
-        public int Width
+        public virtual int Width
         {
             get { return width; }
             set { width = value; }
         }
 
-        public int Height
+        public virtual int Height
         {
             get { return height; }
             set { height = value; }
@@ -50,10 +50,10 @@ namespace pws
 
         public GuiElement(int x, int y, int width, int height)
         {
-            this.X = x;
-            this.Y = y;
-            this.Width = width;
-            this.Height = height;
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
         }
 
         public GuiElement(int width, int height)

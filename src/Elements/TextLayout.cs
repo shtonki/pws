@@ -63,7 +63,7 @@ namespace pws
             {
                 var v = ff.characters[c.ToString()];
 
-                int rw = (int)(v.width * width / tw);
+                int rw = (int)(v.width * (width-1) / tw);
 
                 xs.Add(new characterLayout(p, 0, rw, new Box(v.startx / w, 0, v.width / w, 1)));
                 p += rw;
@@ -101,13 +101,23 @@ namespace pws
         private int minsize = 1;
         private int maxsize = Int32.MaxValue;
 
+        public MultiLineFitLayout()
+        {
+
+        }
+
+        public MultiLineFitLayout(int maxsize)
+        {
+            this.maxsize = maxsize;
+        }
+
         public override LaidText layout(string text, int width, int height, FontFamille ff)
         {
             var words = text.Split(' ');
 
             var sz = ImageLoader.sizeOf(ff.fontImage);
-            double w = (double)sz.Width;
-            double h = (double)sz.Height;
+            double w = sz.Width;
+            double h = sz.Height;
 
             List<characterLayout> candidate = null;
 
@@ -130,13 +140,13 @@ namespace pws
                         wordwidth += (int)charwidth;
                     }
 
-                    if (xpos + wordwidth > width)
+                    if (xpos + wordwidth >= width)
                     {
                         xpos = 0;
                         ypos += fontheight;
                     }
 
-                    if (ypos + fontheight > height || wordwidth > width)
+                    if (ypos + fontheight >= height || wordwidth >= width)
                     {
                         return new LaidText(candidate, ff, fontheight - 1);
                     }
@@ -157,7 +167,7 @@ namespace pws
                 candidate = xlist;
             }
 
-            throw new Exception();
+            return new LaidText(candidate, ff, maxsize);
         }
     }
 
