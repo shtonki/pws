@@ -13,10 +13,11 @@ namespace pws
     
     class Program
     {
-        public const bool design = false;
+        public const bool design = true;
 
         static void Main(string[] args)
         {
+            string s = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyz1234567890!'.\",?*/-+&()";
             GUI.launch();
 
             //FontBuilder.buildFont(Textures.fontovich, FontBuilder.xd);
@@ -24,7 +25,7 @@ namespace pws
             LoginScreen l = new LoginScreen();
             GameScreen g = new GameScreen();
 
-            GUI.setScreen(g);
+            GUI.setScreen(l);
         }
     }
 

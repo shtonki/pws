@@ -46,8 +46,4 @@ namespace pws
 
         public static FontFamille font1 = new FontFamille(Textures.fontovich, Properties.Resources.font1);
     }
-
-    class Font
-    {
-    }
 }

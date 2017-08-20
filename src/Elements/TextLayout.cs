@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace pws
 {
@@ -17,7 +18,7 @@ namespace pws
             this.charHeight = charHeight;
         }
 
-        public void draw(DrawerMaym dm, int x, int y, int xoffset, int maxWidth)
+        public void draw(DrawerMaym dm, int yoffset, int xoffset, int maxWidth, Color textColor)
         {
             foreach (var xdd in xs)
             {
@@ -27,10 +28,14 @@ namespace pws
                     dm.drawTexture(
                         ff.fontImage,
                         xdd.xpos + xoffset,
-                        xdd.ypos,
+                        xdd.ypos + yoffset,
                         xdd.width,
                         charHeight,
-                        xdd.crop);
+                        xdd.crop, textColor);
+                }
+                else
+                {
+                    throw new Exception();
                 }
             }
         }
@@ -73,56 +78,51 @@ namespace pws
             double w = (double)sz.Width;
             double h = (double)sz.Height;
 
-            var sc = height/h;
-
-            var tw = (double)text.Sum(c => sc*ff.characters[c.ToString()].width);
-
-            int p;
-
-            if (tw < width)
-            {
-                //throw new Exception();
-            }
-
-
-            switch (justify)
-            {
-                case Justify.Left:
-                {
-                    p = 0;
-                } break;
-
-                case Justify.Middle:
-                {
-                    if (tw < width)
-                    {
-                        p = (int)((width - tw)/2);
-                    }
-                    else
-                    {
-                        p = 0;
-                    }
-                } break;
-
-                default: throw new Exception();
-            }
-
-            double ws = Math.Min((width - 1)/tw, 1);
+            var yscale = height/h;
+            var scaledTextWidth = text.Sum(c => yscale*ff.characters[c.ToString()].width);
+            int xpos = jstfy(width, scaledTextWidth);
+            double ws = Math.Min((width - 1)/scaledTextWidth, 1);
 
             foreach (char c in text)
             {
                 var v = ff.characters[c.ToString()];
 
-                int rw = (int)(v.width*ws*sc);
+                int rw = (int)(v.width*ws*yscale);
                 //int rw = (int)Math.Min((v.width * (width-1) / tw), height);
 
-                xs.Add(new characterLayout(p, 0, rw, new Box(v.startx / w, 0, v.width / w, 1)));
-                p += rw;
+                xs.Add(new characterLayout(xpos, 0, rw, new Box(v.startx / w, 0, v.width / w, 1)));
+                xpos += rw;
             }
-            if (p >= width) throw new Exception();
+            if (xpos >= width) throw new Exception();
             return new LaidText(xs, ff, height);
         }
+        private int jstfy(int width, double tw)
+        {
+            switch (justify)
+            {
+                case Justify.Left:
+                {
+                    return 0;
+                }
+
+                case Justify.Middle:
+                {
+                    if (tw < width)
+                    {
+                        return (int)((width - tw) / 2);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+
+                default: throw new Exception();
+            }
+        }
     }
+
+    
 
     class SingleLineLayout : TextLayout
     {

@@ -24,7 +24,7 @@ namespace pws
 
         private Designer designer;
 
-        public Frame(int width, int height, ManualResetEventSlim ld = null, bool design = false) : base(width, height, new GraphicsMode(32,24,0,8), "StonerKart")
+        public Frame(int width, int height, ManualResetEventSlim ld = null, bool design = false) : base(width, height, new GraphicsMode(32,24,0,32), "StonerKart")
         {
             loadre = ld;
 

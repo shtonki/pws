@@ -148,7 +148,7 @@ namespace pws
             {
                 case MoveTo.Center:
                 {
-                    return parentLocation + (parentSize / 2 - thisSize / 2);
+                    return (parentSize - thisSize) / 2;
                 }
 
                 case MoveTo.Nowhere:

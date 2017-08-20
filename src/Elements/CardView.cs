@@ -20,7 +20,7 @@ namespace pws
             addChild(namebox);
 
             breadbox = new Square();
-            breadbox.Text = "II II II II II II II II II II II II II II II II II II II II II II II II ";
+            breadbox.Text = "Big mama";
             addChild(breadbox);
 
             movementbox = new Square();
@@ -34,8 +34,8 @@ namespace pws
             addChild(ptbox);
 
             typebox = new Square();
-            typebox.Text = "NIG";
-            typebox.TextLayout = new SingleLineFitLayout();
+            typebox.Text = "HUMAN KNIGHT";
+            typebox.TextLayout = new SingleLineFitLayout(Justify.Middle);
             addChild(typebox);
 
             artbox = new Square();
@@ -71,13 +71,13 @@ namespace pws
         private int breadboxOrigH = 100;
 
         private Square movementbox;
-        private int movementboxOrigX = 24;
+        private int movementboxOrigX = 18;
         private int movementboxOrigY = 321;
         private int movementboxOrigW = 18;
         private int movementboxOrigH = 24;
 
         private Square ptbox;
-        private int ptboxOrigX = 194;
+        private int ptboxOrigX = 199;
         private int ptboxOrigY = 321;
         private int ptboxOrigW = 43;
         private int ptboxOrigH = 24;
@@ -202,7 +202,6 @@ namespace pws
         public override void draw(DrawerMaym dm)
         {
             //base.draw(dm);
-
             dm.drawTexture(Textures.cardframegrey, 0, 0, width, height);
         }
     }

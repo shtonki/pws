@@ -9,13 +9,15 @@ namespace pws
 {
     class Square : GuiElement
     {
-        public int textPadding;
+        public int textPaddingX = 5;
 
         private Color bclr = Color.Transparent;
         private Imege backimege;
+
         private string text = "";
         private FontFamille fontFamily = FontFamille.font1;
         private TextLayout textLayout = new SingleLineFitLayout();
+        public Color textColor { get; set; } = Color.Black;
 
         public void setSize(int width, int height, TextLayout layout = null)
         {
@@ -125,7 +127,7 @@ namespace pws
 
         private void layoutText()
         {
-            laidText = TextLayout.layout(Text, Width, Height, FontFamily);
+            laidText = TextLayout.layout(Text, Width - textPaddingX, Height, FontFamily);
         }
 
         protected LaidText laidText;
@@ -141,7 +143,7 @@ namespace pws
                 dm.drawImege(Backimege, 0, 0, Width, Height);
             }
 
-            laidText?.draw(dm, 0, 0, textPadding, Width);
+            laidText?.draw(dm, 5, textPaddingX, Width, textColor);
             Border?.draw(dm, 0, 0, Width, Height);
         }
     }

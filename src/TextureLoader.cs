@@ -53,7 +53,7 @@ namespace pws
 
             images[Textures.A] = Resources.artMoratianBattleStandard;
             images[Textures.B] = Resources.AlterTime;
-            images[Textures.fontovich] = Resources.noname;
+            images[Textures.fontovich] = Resources.font0;
             images[Textures.memex] = Resources.memex;
             images[Textures.bg0] = Resources.background0;
             images[Textures.bg1] = Resources.background1;

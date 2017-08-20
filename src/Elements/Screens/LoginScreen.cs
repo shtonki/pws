@@ -34,17 +34,23 @@ namespace pws
             usernameLabel = new Square(220, 60);
             addElement(usernameLabel);
             usernameLabel.moveTo(MoveTo.Center, 140);
-            usernameLabel.Text = "USERNAME";
+            usernameLabel.Text = "Username";
+            usernameLabel.textColor = Color.White;
 
             passwordLabel = new Square(220, 60);
             addElement(passwordLabel);
             passwordLabel.moveTo(MoveTo.Center, 340);
-            passwordLabel.Text = "PASSVORD";
+            passwordLabel.Text = "Password";
+            passwordLabel.textColor = Color.White;
 
-            loginButton = new MemeButton(500, 80);
+            loginButton = new MemeButton(500, 90);
             addElement(loginButton);
             loginButton.moveTo(MoveTo.Center, 550);
-            loginButton.Text = "LOG IN";
+
+            var logintext = new Square(250, 80);
+            logintext.Text = "Log in";
+            loginButton.addChild(logintext);
+            logintext.moveTo(MoveTo.Center, 0);
             loginButton.Border = new AnimatedBorder(Textures.border0, 5);
         }
     }

@@ -201,31 +201,65 @@ namespace pws.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A 0 40
-        ///B 40 33
-        ///C 73 37
-        ///D 110 38
-        ///E 148 30
-        ///F 178 30
-        ///G 208 40
-        ///H 248 38
-        ///I 286 16
-        ///J 302 20
-        ///K 322 40
-        ///L 362 25
-        ///M 387 50
-        ///N 437 45
-        ///O 482 40
-        ///P 522 33
-        ///Q 555 48
-        ///R 603 30
-        ///S 633 28
-        ///T 661 35
-        ///U 696 37
-        ///V 733 38
-        ///X 771 33
-        ///Y 804 31
-        ///Z 835 30.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap font0 {
+            get {
+                object obj = ResourceManager.GetObject("font0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A 0 62
+        ///B 62 56
+        ///C 118 54
+        ///D 172 60
+        ///E 232 54
+        ///F 286 50
+        ///G 336 62
+        ///H 398 66
+        ///I 464 34
+        ///J 498 36
+        ///K 534 63
+        ///L 597 46
+        ///M 643 73
+        ///N 716 60
+        ///O 776 64
+        ///P 840 59
+        ///Q 899 65
+        ///R 964 60
+        ///S 1024 52
+        ///T 1076 53
+        ///U 1129 62
+        ///V 1191 58
+        ///W 1249 84
+        ///X 1333 54
+        ///Y 1387 57
+        ///Z 1444 45
+        ///a 1489 48
+        ///b 1537 51
+        ///c 1588 42
+        ///d 1630 51
+        ///e 1681 46
+        ///f 1727 36
+        ///g 1763 44
+        ///h 1807 54
+        ///i 1861 30
+        ///j 1891 29
+        ///k 1920 54
+        ///l 1974 27
+        ///m 2001 81
+        ///n 2082 56
+        ///o 2138 53
+        ///p 2191 51
+        ///q 2242 51
+        ///r 2293 41
+        ///s 2334 37
+        ///t 2371 32
+        ///u 2403 52
+        ///v 2455 45
+        ///w 250 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string font1 {
             get {

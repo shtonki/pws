@@ -135,17 +135,18 @@ namespace pws
             drawTexture(i.texture, x, y, width, height, i.crop);
         }
 
-        public void drawTexture(Textures t, int x, int y, int width, int height, Box? cropbox = null)
+        public void drawTexture(Textures t, int x, int y, int width, int height, Box? cropbox = null, Color? c = null)
         {
-            drawTextureR(t, new Box(x, y, width, height), cropbox);
+            drawTextureR(t, new Box(x, y, width, height), cropbox, c);
         }
 
-        private void drawTextureR(Textures tx, Box imageLocation, Box? crop = null)
+        private void drawTextureR(Textures tx, Box imageLocation, Box? crop = null, Color? c = null)
         {
-            Box cropx = crop == null ? new Box(0.0, 0.0, 1.0, 1.0) : crop.Value;
+            Color clr = c ?? Color.White;
+            Box cropx = crop ?? new Box(0.0, 0.0, 1.0, 1.0);
 
             GL.Enable(EnableCap.Texture2D);
-            GL.Color4(Color.White);
+            GL.Color4(clr);
             GL.BindTexture(TextureTarget.Texture2D, textures[tx]);
             GL.Begin(PrimitiveType.Quads);
             

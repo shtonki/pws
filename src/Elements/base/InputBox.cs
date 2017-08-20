@@ -52,14 +52,14 @@ namespace pws
             int textWidth = laidText.xs.Sum(cl => cl.width);
             if (textWidth > Width)
             {
-                textPadding = Width - textWidth - 8;
+                textPaddingX = Width - textWidth - 8;
             }
             else
             {
-                textPadding = 0;
+                textPaddingX = 0;
             }
 
-            caretPosition = textPadding + textWidth;
+            caretPosition = textPaddingX + textWidth;
         }
 
         private int caretBlinkCounter;
