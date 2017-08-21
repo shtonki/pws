@@ -43,15 +43,15 @@ namespace pws
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.wallabar1 = new pws.wallabar();
-            this.wallabar2 = new pws.wallabar();
-            this.wallabar3 = new pws.wallabar();
-            this.wallabar4 = new pws.wallabar();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.wallabar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wallabar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wallabar3)).BeginInit();
+            this.wallabar4 = new pws.wallabar();
+            this.wallabar3 = new pws.wallabar();
+            this.wallabar2 = new pws.wallabar();
+            this.wallabar1 = new pws.wallabar();
             ((System.ComponentModel.ISupportInitialize)(this.wallabar4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wallabar3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wallabar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wallabar1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -94,35 +94,15 @@ namespace pws
             this.label4.TabIndex = 3;
             this.label4.Text = "label4";
             // 
-            // wallabar1
+            // button1
             // 
-            this.wallabar1.f = null;
-            this.wallabar1.Location = new System.Drawing.Point(128, 9);
-            this.wallabar1.Maximum = 1000;
-            this.wallabar1.Name = "wallabar1";
-            this.wallabar1.Size = new System.Drawing.Size(414, 45);
-            this.wallabar1.TabIndex = 4;
-            this.wallabar1.Value = 500;
-            // 
-            // wallabar2
-            // 
-            this.wallabar2.f = null;
-            this.wallabar2.Location = new System.Drawing.Point(128, 68);
-            this.wallabar2.Maximum = 1000;
-            this.wallabar2.Name = "wallabar2";
-            this.wallabar2.Size = new System.Drawing.Size(414, 45);
-            this.wallabar2.TabIndex = 5;
-            this.wallabar2.Value = 500;
-            // 
-            // wallabar3
-            // 
-            this.wallabar3.f = null;
-            this.wallabar3.Location = new System.Drawing.Point(128, 119);
-            this.wallabar3.Maximum = 1000;
-            this.wallabar3.Name = "wallabar3";
-            this.wallabar3.Size = new System.Drawing.Size(414, 45);
-            this.wallabar3.TabIndex = 6;
-            this.wallabar3.Value = 500;
+            this.button1.Location = new System.Drawing.Point(17, 299);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // wallabar4
             // 
@@ -134,15 +114,35 @@ namespace pws
             this.wallabar4.TabIndex = 7;
             this.wallabar4.Value = 500;
             // 
-            // button1
+            // wallabar3
             // 
-            this.button1.Location = new System.Drawing.Point(17, 299);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.wallabar3.f = null;
+            this.wallabar3.Location = new System.Drawing.Point(128, 119);
+            this.wallabar3.Maximum = 1000;
+            this.wallabar3.Name = "wallabar3";
+            this.wallabar3.Size = new System.Drawing.Size(414, 45);
+            this.wallabar3.TabIndex = 6;
+            this.wallabar3.Value = 500;
+            // 
+            // wallabar2
+            // 
+            this.wallabar2.f = null;
+            this.wallabar2.Location = new System.Drawing.Point(128, 68);
+            this.wallabar2.Maximum = 1000;
+            this.wallabar2.Name = "wallabar2";
+            this.wallabar2.Size = new System.Drawing.Size(414, 45);
+            this.wallabar2.TabIndex = 5;
+            this.wallabar2.Value = 500;
+            // 
+            // wallabar1
+            // 
+            this.wallabar1.f = null;
+            this.wallabar1.Location = new System.Drawing.Point(128, 9);
+            this.wallabar1.Maximum = 1000;
+            this.wallabar1.Name = "wallabar1";
+            this.wallabar1.Size = new System.Drawing.Size(414, 45);
+            this.wallabar1.TabIndex = 4;
+            this.wallabar1.Value = 500;
             // 
             // Designer
             // 
@@ -157,10 +157,10 @@ namespace pws
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Designer";
-            ((System.ComponentModel.ISupportInitialize)(this.wallabar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wallabar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wallabar3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wallabar4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wallabar3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wallabar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wallabar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

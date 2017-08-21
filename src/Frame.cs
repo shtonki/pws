@@ -123,7 +123,7 @@ namespace pws
 
             e.Position = scalePoint(e.Position);
             var newover = elementAt(e.Position);
-            
+
             if (newover != hovered)
             {
                 hovered?.onMouseLeave(e);
@@ -165,7 +165,8 @@ namespace pws
 
                 foreach (var v in l)
                 {
-                    if (v.X < x &&
+                    if (v.hoverable &&
+                        v.X < x &&
                         v.X + v.Width > x &&
                         v.Y < y &&
                         v.Y + v.Height > y)

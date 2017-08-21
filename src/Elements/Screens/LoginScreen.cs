@@ -16,6 +16,7 @@ namespace pws
         private Square passwordLabel;
 
         private Button loginButton;
+        private Button registerButton;
 
         public LoginScreen() : base(new Imege(Textures.bg3))
         {
@@ -46,12 +47,22 @@ namespace pws
             loginButton = new MemeButton(500, 90);
             addElement(loginButton);
             loginButton.moveTo(MoveTo.Center, 550);
-
             var logintext = new Square(250, 80);
             logintext.Text = "Log in";
+            logintext.hoverable = false;
             loginButton.addChild(logintext);
             logintext.moveTo(MoveTo.Center, 0);
             loginButton.Border = new AnimatedBorder(Textures.border0, 5);
+
+            registerButton = new MemeButton(500, 90);
+            addElement(registerButton);
+            registerButton.moveTo(MoveTo.Center, 850);
+            var registertext = new Square(500, 80);
+            registertext.Text = "Register";
+            registertext.hoverable = false;
+            registerButton.addChild(registertext);
+            registertext.moveTo(MoveTo.Center, 0);
+            registerButton.Border = new AnimatedBorder(Textures.border0, 5);
         }
     }
 }

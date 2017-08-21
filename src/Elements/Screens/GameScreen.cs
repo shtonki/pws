@@ -20,9 +20,16 @@ namespace pws
             v.moveTo(MoveTo.Center, MoveTo.Center);
             addElement(p);
             /*/
-            CardView cv = new CardView();
-            //cv.Height = 400;
-            addElement(cv);
+            int xxx = 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                CardView cv = new CardView();
+                cv.Height = 100 + i*100;
+                cv.X = xxx;
+                xxx += cv.Width;
+                addElement(cv);
+            }
             //*/
         }
     }

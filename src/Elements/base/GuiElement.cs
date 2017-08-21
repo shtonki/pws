@@ -10,16 +10,14 @@ namespace pws
 {
     abstract class GuiElement
     {
-
-        public int x;
-        public int y;
-
-
-        public int width;
-        public int height;
+        protected int x;
+        protected int y;
+        protected int width;
+        protected int height;
         
         public bool focused { get; private set; }
         public bool selectable { get; set; }
+        public bool hoverable { get; set; } = true;
 
         public List<GuiElement> children { get; private set; }= new List<GuiElement>();
         public GuiElement parent { get; private set; }

@@ -9,32 +9,32 @@ namespace pws
 {
     class CardView : Square
     {
-        private const int framewidth = 250;
-        private const int frameheight = 350;
+        private const int framewidth = 500;
+        private const int frameheight = 700;
 
         public CardView() : base(framewidth, frameheight)
         {
             namebox = new Square();
-            namebox.Text = "RASPUTIN";
+            namebox.Text = "Rasputin the Mad";
             namebox.TextLayout = new SingleLineFitLayout();
             addChild(namebox);
 
             breadbox = new Square();
-            breadbox.Text = "Big mama";
+            breadbox.Text = "Whenever Rasputin the Mad attacks you may draw a card.";
             addChild(breadbox);
 
             movementbox = new Square();
-            movementbox.Text = "A";
+            movementbox.Text = "3";
             movementbox.TextLayout = new SingleLineFitLayout();
             addChild(movementbox);
 
             ptbox = new Square();
-            ptbox.Text = "A A";
+            ptbox.Text = "3/4";
             ptbox.TextLayout = new SingleLineFitLayout();
             addChild(ptbox);
 
             typebox = new Square();
-            typebox.Text = "HUMAN KNIGHT";
+            typebox.Text = "Human Mystic";
             typebox.TextLayout = new SingleLineFitLayout(Justify.Middle);
             addChild(typebox);
 
@@ -51,70 +51,73 @@ namespace pws
             {
                 this.onClick(args);
             };
-            addChild(topbutton);
+            //addChild(topbutton);
 
             layoutStuff();
         }
 
         private Square topbutton;
 
-        private Square namebox;
-        private int nameboxOrigX = 17;
-        private int nameboxOrigY = 7;
-        private int nameboxOrigW = 123;
-        private int nameboxOrigH = 20;
-
-        private Square breadbox;
-        private int breadboxOrigX = 33;
-        private int breadboxOrigY = 200;
-        private int breadboxOrigW = 200;
-        private int breadboxOrigH = 100;
-
-        private Square movementbox;
-        private int movementboxOrigX = 18;
-        private int movementboxOrigY = 321;
-        private int movementboxOrigW = 18;
-        private int movementboxOrigH = 24;
-
-        private Square ptbox;
-        private int ptboxOrigX = 199;
-        private int ptboxOrigY = 321;
-        private int ptboxOrigW = 43;
-        private int ptboxOrigH = 24;
-
-        private Square typebox;
-        private int typeboxOrigX = 67;
-        private int typeboxOrigY = 321;
-        private int typeboxOrigW = 118;
-        private int typeboxOrigH = 28;
-
-        private Square artbox;
-        private int artboxOrigX = 25;
-        private int artboxOrigY = 34;
-        private int artboxOrigW = 199;
-        private int artboxOrigH = 149;
-
-        private Square orbbox;
-        private int orbboxOrigR = 231;
-        private int orbboxOrigY = 10;
-        private int orbboxOrigW = 199;
-        private int orbboxOrigH = 15;
+        private  Square namebox;
+        private const int nameboxOrigX = 26;
+        private const int nameboxOrigY = 9;
+        private const int nameboxOrigW = 246;
+        private const int nameboxOrigH = 40;
+                 
+        private  Square breadbox;
+        private const int breadboxOrigX = 44;
+        private const int breadboxOrigY = 396;
+        private const int breadboxOrigW = 408;
+        private const int breadboxOrigH = 236;
+                 
+        private  Square movementbox;
+        private const int movementboxOrigX = 36;
+        private const int movementboxOrigY = 636;
+        private const int movementboxOrigW = 36;
+        private const int movementboxOrigH = 48;
+                 
+        private  Square ptbox;
+        private const int ptboxOrigX = 398;
+        private const int ptboxOrigY = movementboxOrigY;
+        private const int ptboxOrigW = 86;
+        private const int ptboxOrigH = 48;
+                 
+        private  Square typebox;
+        private const int typeboxOrigX = 134;
+        private const int typeboxOrigY = 639;
+        private const int typeboxOrigW = 236;
+        private const int typeboxOrigH = 50;
+                 
+        private  Square artbox;
+        private const int artboxOrigX = 52;
+        private const int artboxOrigY = 68;
+        private const int artboxOrigW = 398;
+        private const int artboxOrigH = 298;
+                 
+        private  Square orbbox;
+        private const int orbboxOrigR = 470;
+        private const int orbboxOrigY = 20;
+        private const int orbboxOrigW = 398;
+        private const int orbboxOrigH = 30;
 
         public void layoutStuff()
         {
             topbutton.setSize(width, height);
 
-            var scale = ((double)height)/frameheight;
+            int adj = 10 - height/100;
+            adj = 0;
 
-            int orbcount = 10;
+            var scale = ((double)(height-adj))/frameheight;
+
+            int orbcount = 3;
             int pad = 1;
 
             orbbox.clearChildren();
 
-            var orbsize = (int)(scale*orbboxOrigH);
+            var orbsize = (int)Math.Round((scale * orbboxOrigH));
 
-            orbbox.X = (int)(scale * orbboxOrigR) - orbcount * orbsize;
-            orbbox.Y = (int)(scale * orbboxOrigY);
+            orbbox.X = (int)Math.Round((scale * orbboxOrigR)) - orbcount * orbsize;
+            orbbox.Y = (int)Math.Round((scale * orbboxOrigY));
             orbbox.setSize(
                 orbcount * (orbsize + pad),
                 orbsize
@@ -124,52 +127,52 @@ namespace pws
             {
                 Square orbsquare = new Square(orbsize, orbsize);
                 orbbox.addChild(orbsquare);
-                orbsquare.X = i*(orbsize + pad);
+                orbsquare.X = i * (orbsize + pad);
                 orbsquare.Backimege = new Imege(Textures.orbchaos);
             }
 
 
-            namebox.X = (int)(scale*nameboxOrigX);
-            namebox.Y = (int)(scale*nameboxOrigY);
+            namebox.X = (int)Math.Round((scale * nameboxOrigX));
+            namebox.Y = (int)Math.Floor((scale * nameboxOrigY));
             namebox.setSize(
                 orbbox.X - namebox.X,
-                (int)(scale * nameboxOrigH)
+                (int)Math.Round((scale * nameboxOrigH))
                 );
 
-            breadbox.X = (int)(scale * breadboxOrigX);
-            breadbox.Y = (int)(scale * breadboxOrigY);
+            breadbox.X = (int)Math.Round((scale * breadboxOrigX));
+            breadbox.Y = (int)Math.Round((scale * breadboxOrigY));
             breadbox.setSize(
-                (int)(scale * breadboxOrigW),
-                (int)(scale * breadboxOrigH),
-                new MultiLineFitLayout(height/10)
+                (int)Math.Round((scale * breadboxOrigW)),
+                (int)Math.Round((scale * breadboxOrigH)),
+                new MultiLineFitLayout(height / 17)
                 );
 
-            movementbox.X = (int)(scale * movementboxOrigX);
-            movementbox.Y = (int)(scale * movementboxOrigY);
+            movementbox.X = (int)Math.Round((scale * movementboxOrigX));
+            movementbox.Y = (int)Math.Round((scale * movementboxOrigY));
             movementbox.setSize(
-                (int)(scale * movementboxOrigW),
-                (int)(scale * movementboxOrigH)
+                (int)Math.Round((scale * movementboxOrigW)),
+                (int)Math.Round((scale * movementboxOrigH))
                 );
 
-            ptbox.X = (int)(scale * ptboxOrigX);
-            ptbox.Y = (int)(scale * ptboxOrigY);
+            ptbox.X = (int)Math.Round((scale * ptboxOrigX));
+            ptbox.Y = (int)Math.Round((scale * ptboxOrigY));
             ptbox.setSize(
-                (int)(scale * ptboxOrigW),
-                (int)(scale * ptboxOrigH)
+                (int)Math.Round((scale * ptboxOrigW)),
+                (int)Math.Round((scale * ptboxOrigH))
                 );
 
-            typebox.X = (int)(scale * typeboxOrigX);
-            typebox.Y = (int)(scale * typeboxOrigY);
+            typebox.X = (int)Math.Round((scale * typeboxOrigX));
+            typebox.Y = (int)Math.Round((scale * typeboxOrigY));
             typebox.setSize(
-                (int)(scale * typeboxOrigW),
-                (int)(scale * typeboxOrigH)
+                (int)Math.Round((scale * typeboxOrigW)),
+                (int)Math.Round((scale * typeboxOrigH))
                 );
 
-            artbox.X = (int)(scale * artboxOrigX);
-            artbox.Y = (int)(scale * artboxOrigY);
+            artbox.X = (int)Math.Round((scale * artboxOrigX));
+            artbox.Y = (int)Math.Round((scale * artboxOrigY));
             artbox.setSize(
-                (int)(scale * artboxOrigW),
-                (int)(scale * artboxOrigH)
+                (int)Math.Round((scale * artboxOrigW)),
+                (int)Math.Round((scale * artboxOrigH))
                 );
         }
 
@@ -197,12 +200,12 @@ namespace pws
 
         private const double imgxo = 26.0/framewidth;
         private const double imgxw = 96.0/framewidth;
-        
+
 
         public override void draw(DrawerMaym dm)
         {
             //base.draw(dm);
-            dm.drawTexture(Textures.cardframegrey, 0, 0, width, height);
+            dm.drawTexture(Textures.cardframegrey, 0, 0, width, height, null, Color.FromArgb(70, 70, 70));
         }
     }
 }
