@@ -104,10 +104,12 @@ namespace pws
         {
             topbutton.setSize(width, height);
 
-            int adj = 10 - height/100;
-            adj = 0;
+            #region fulhack
+            int adj = height < 280 ? 2 : 0;
+            int adj1 = height < 380 ? 3 : 0;
+            #endregion
 
-            var scale = ((double)(height-adj))/frameheight;
+            var scale = ((double)(height-adj1))/frameheight;
 
             int orbcount = 3;
             int pad = 1;
@@ -133,7 +135,7 @@ namespace pws
 
 
             namebox.X = (int)Math.Round((scale * nameboxOrigX));
-            namebox.Y = (int)Math.Floor((scale * nameboxOrigY));
+            namebox.Y = (int)Math.Floor((scale * nameboxOrigY)) - adj;
             namebox.setSize(
                 orbbox.X - namebox.X,
                 (int)Math.Round((scale * nameboxOrigH))

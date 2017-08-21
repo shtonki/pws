@@ -8,7 +8,7 @@ namespace pws
 {
     class GameScreen : Screen
     {
-        public GameScreen()
+        public GameScreen() : base(new Imege(Textures.table0))
         {
             /*/
             var v = new HexPanel(11, 7, 80);
@@ -25,7 +25,7 @@ namespace pws
             for (int i = 0; i < 5; i++)
             {
                 CardView cv = new CardView();
-                cv.Height = 100 + i*100;
+                cv.Height = 150 + i*100;
                 cv.X = xxx;
                 xxx += cv.Width;
                 addElement(cv);
