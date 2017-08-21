@@ -44,7 +44,8 @@ namespace pws
             passwordLabel.Text = "Password";
             passwordLabel.textColor = Color.White;
 
-            loginButton = new MemeButton(500, 90);
+            loginButton = new Button(500, 90);
+            loginButton.Backimege = new MemeImege(Textures.buttonbg2);
             addElement(loginButton);
             loginButton.moveTo(MoveTo.Center, 550);
             var logintext = new Square(250, 80);
@@ -53,8 +54,10 @@ namespace pws
             loginButton.addChild(logintext);
             logintext.moveTo(MoveTo.Center, 0);
             loginButton.Border = new AnimatedBorder(Textures.border0, 5);
+            loginButton.clicked += a => Console.WriteLine("logging in");
 
-            registerButton = new MemeButton(500, 90);
+            registerButton = new Button(500, 90);
+            registerButton.Backimege = new MemeImege(Textures.buttonbg2);
             addElement(registerButton);
             registerButton.moveTo(MoveTo.Center, 850);
             var registertext = new Square(500, 80);

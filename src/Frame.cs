@@ -73,7 +73,7 @@ namespace pws
 
                 if (activeScreen.background != null) dm.drawImege(activeScreen.background, 0, 0, BACKSCREENWIDTH, BACKSCREENHEIGHT);
 
-                foreach (var elem in activeScreen.elements)
+                foreach (var elem in activeScreen.Elements)
                 {
                     drawElement(elem, dm);
                 }
@@ -157,7 +157,7 @@ namespace pws
             int x = sp.X;
             int y = sp.Y;
             GuiElement r = null;
-            var l = activeScreen.elements;
+            var l = activeScreen.Elements;
 
             while (true)
             {
@@ -196,8 +196,6 @@ namespace pws
 
             return new PointF(sx, sy);
         }
-
-
 
         public const int BACKSCREENWIDTH = 1920;
         public const int BACKSCREENHEIGHT = 1080;

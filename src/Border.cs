@@ -91,7 +91,7 @@ namespace pws
                 new Box(offset, ypos, cropthickness, cropskip)); //left
 
             dm.drawTexture(texture, 0, height - thickness, width, thickness,
-                new Box(offset, ypos + cropskip - cropthickness, cropsize, cropthickness)); //bottom
+                new Box(offset, ypos + cropthickness, cropskip, -cropthickness)); //bottom
 
             dm.drawTexture(texture, width - thickness, 0, thickness, height,
                 new Box(offset + cropskip - cropthickness, ypos, cropthickness, cropskip)); //right

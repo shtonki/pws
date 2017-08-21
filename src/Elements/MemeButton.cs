@@ -6,15 +6,26 @@ using System.Threading.Tasks;
 
 namespace pws
 {
-    class MemeButton : Button
+    class MemeImege : Imege
     {
         private static Random rand = new Random(420);
 
-        public MemeButton(int width, int height) : base(width, height)
+        public MemeImege(Textures texture, int seed = -1) : base(texture, boxify(seed))
         {
-            var x = rand.NextDouble()*0.7;
-            var y = rand.NextDouble()*0.7;
-            Backimege = new Imege(Textures.buttonbg2, new Box(x, y, 0.3, 0.3));
         }
+
+        private static Box boxify(int seed)
+        {
+            Random r = rand;
+            if (seed != -1)
+            {
+                r = new Random(seed);
+            }
+
+            var x = r.NextDouble() * 0.7;
+            var y = r.NextDouble() * 0.7;
+            return new Box(x, y, 0.3, 0.3);
+        }
+
     }
 }
